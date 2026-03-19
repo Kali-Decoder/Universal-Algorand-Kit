@@ -2,12 +2,12 @@ import { createConfig, http } from 'wagmi'
 import { injected, walletConnect } from 'wagmi/connectors'
 import { defineChain } from 'viem'
 
-export const polkadotHubTestnet = defineChain({
+export const algorandTestnet = defineChain({
   id: 420420417,
-  name: 'Polkadot Hub Testnet',
+  name: 'Algorand Testnet',
   nativeCurrency: { name: 'WND', symbol: 'WND', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://testnet-passet-hub-eth-rpc.polkadot.io'] },
+    default: { http: ['https://testnet-api.algonode.cloud'] },
   },
   blockExplorers: {
     default: {
@@ -18,9 +18,9 @@ export const polkadotHubTestnet = defineChain({
 })
 
 export const wagmiConfig = createConfig({
-  chains: [polkadotHubTestnet],
+  chains: [algorandTestnet],
   transports: {
-    [polkadotHubTestnet.id]: http(),
+    [algorandTestnet.id]: http(),
   },
   connectors: [
     injected(),

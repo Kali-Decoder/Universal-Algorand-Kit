@@ -137,11 +137,11 @@ export const corridors: Corridor[] = [
 export const faqs: FAQItem[] = [
   {
     question: 'What stablecoins are supported?',
-    answer: 'RemitStar currently supports USDC and USDT on Polkadot Hub Testnet. All transfers are routed through RemitCore, settle on-chain in ~6 seconds, and are fully auditable on the Subscan explorer.',
+    answer: 'RemitStar currently supports USDC and USDT on Algorand Testnet. All transfers are routed through RemitCore, settle on-chain in ~6 seconds, and are fully auditable on the explorer.',
   },
   {
-    question: 'Do I need a Polkadot wallet?',
-    answer: 'No. You only need a standard EVM-compatible wallet (like MetaMask or WalletConnect-compatible wallet). RemitStar runs on Polkadot Hub which is fully EVM-compatible — no Polkadot.js wallet required.',
+    question: 'Do I need an Algorand wallet?',
+    answer: 'No. You only need a standard EVM-compatible wallet (like MetaMask or WalletConnect-compatible wallet). RemitStar executes intents on Algorand — no Algorand-specific wallet required.',
   },
   {
     question: 'How is the exchange rate calculated?',
@@ -162,7 +162,7 @@ export const faqs: FAQItem[] = [
 ];
 
 // Chain options for the source-chain selector in SendForm and Calculator.
-// These represent future XCM source chains; currently all transfers go through Polkadot Hub.
+// These represent future source chains; currently all transfers go through Algorand.
 export const chains: ChainOption[] = [
   { id: 'eth',  name: 'Ethereum', icon: 'Ξ' },
   { id: 'base', name: 'Base',     icon: '◈' },

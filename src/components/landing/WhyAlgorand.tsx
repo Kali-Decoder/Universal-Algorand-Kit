@@ -59,11 +59,11 @@ const features = [
   },
 ];
 
-export default function WhyPolkadot() {
+export default function WhyAlgorand() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="why-polkadot" className="py-24 md:py-32 bg-[#060606]">
+    <section id="why-algorand" className="py-24 md:py-32 bg-[#060606]">
       <div className="px-5 md:px-8 lg:px-12 max-w-7xl mx-auto mb-16 md:mb-20">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

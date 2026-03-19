@@ -4,7 +4,7 @@ import StatsBar from '../components/landing/StatsBar';
 import HowItWorks from '../components/landing/HowItWorks';
 import Calculator from '../components/landing/Calculator';
 import Corridors from '../components/landing/Corridors';
-import WhyPolkadot from '../components/landing/WhyPolkadot';
+import WhyAlgorand from '../components/landing/WhyAlgorand';
 import TrustSecurity from '../components/landing/TrustSecurity';
 import Pricing from '../components/landing/Pricing';
 import ComparisonTable from '../components/landing/ComparisonTable';
@@ -21,7 +21,7 @@ export default function Landing() {
       <HowItWorks />
       {/* <Calculator /> */}
       <Corridors />
-      <WhyPolkadot />
+      <WhyAlgorand />
       <TrustSecurity />
       {/* <Pricing /> */}
       <ComparisonTable />

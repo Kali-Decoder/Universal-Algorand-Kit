@@ -6,7 +6,7 @@ import X from 'lucide-react/dist/esm/icons/x.js';
 const navLinks = [
   { label: 'How It Works', id: 'how-it-works' },
   { label: 'Architecture', id: 'corridors' },
-  { label: 'Why Algorand', id: 'why-polkadot' },
+  { label: 'Why Algorand', id: 'why-algorand' },
   { label: 'FAQ', id: 'faq' },
 ];
 

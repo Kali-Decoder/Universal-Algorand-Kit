@@ -12,7 +12,7 @@ export default function AppTopBar({ pageTitle }: AppTopBarProps) {
         <h1 className="text-white font-bold text-lg">{pageTitle}</h1>
         <div className="flex items-center gap-1.5 bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] rounded-full px-3 py-1">
           <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse" />
-          <span className="text-[#bdf500] text-xs font-semibold">Polkadot Hub</span>
+          <span className="text-[#bdf500] text-xs font-semibold">Algorand</span>
         </div>
       </div>
 

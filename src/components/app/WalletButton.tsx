@@ -4,7 +4,7 @@ import AlertTriangle from 'lucide-react/dist/esm/icons/alert-triangle.js';
 import { useWallet } from '../../lib/hooks/useWallet';
 
 export default function WalletButton() {
-  const { isConnected, isCorrectNetwork, connect, disconnect, switchToPolkadot, shortAddress } = useWallet();
+  const { isConnected, isCorrectNetwork, connect, disconnect, switchToAlgorand, shortAddress } = useWallet();
 
   if (!isConnected) {
     return (
@@ -21,7 +21,7 @@ export default function WalletButton() {
   if (!isCorrectNetwork) {
     return (
       <button
-        onClick={switchToPolkadot}
+        onClick={switchToAlgorand}
         className="flex items-center gap-2 bg-[#FF8800]/10 hover:bg-[#FF8800]/20 border border-[#FF8800]/30 text-[#FF8800] font-bold px-4 py-2 rounded-xl transition-all text-sm"
       >
         <AlertTriangle size={16} />

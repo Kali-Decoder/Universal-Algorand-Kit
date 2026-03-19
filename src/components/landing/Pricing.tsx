@@ -6,7 +6,7 @@ import Check from 'lucide-react/dist/esm/icons/check.js';
 const feeRows = [
   { label: 'Send transfer', fee: '0.3%', note: 'Min. ~$0.01' },
   { label: 'Receive transfer', fee: 'Free', note: '' },
-  { label: 'Network fee', fee: '~$0.002', note: 'Polkadot Hub' },
+  { label: 'Network fee', fee: '~$0.002', note: 'Algorand' },
   { label: 'Currency conversion', fee: 'Included', note: 'Chainlink rates' },
   { label: 'Account fee', fee: 'Free', note: 'No monthly fee' },
 ];

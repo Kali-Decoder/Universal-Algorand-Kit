@@ -56,7 +56,7 @@ export default function SendForm() {
   const [quote, setQuote] = useState<{ fee: bigint; netAmount: bigint; amountOut: bigint } | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const { isConnected, isCorrectNetwork, connect, switchToPolkadot } = useWallet();
+  const { isConnected, isCorrectNetwork, connect, switchToAlgorand } = useWallet();
   const { formatted: balanceFormatted } = useTokenBalance(selectedToken.address);
   const { getQuote, send, step, txHash, error, isLoading, reset } = useSendRemittance();
 
@@ -80,7 +80,7 @@ export default function SendForm() {
 
   const handleSend = async () => {
     if (!isConnected) { connect(); return; }
-    if (!isCorrectNetwork) { switchToPolkadot(); return; }
+    if (!isCorrectNetwork) { switchToAlgorand(); return; }
     if (!recipient || !quote) return;
     await send({
       token: selectedToken.address,
@@ -182,7 +182,7 @@ export default function SendForm() {
               <div className="w-8 h-8 rounded-full bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] flex items-center justify-center">
                 <ArrowRight size={14} className="text-[#bdf500]" />
               </div>
-              <span className="text-[#8e9191] text-xs whitespace-nowrap">Polkadot Hub</span>
+              <span className="text-[#8e9191] text-xs whitespace-nowrap">Algorand</span>
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[rgba(189,245,0,0.2)] to-transparent" />
           </div>
@@ -325,7 +325,7 @@ export default function SendForm() {
                   </p>
                   <div className="flex items-center justify-center gap-2 text-[#8e9191] text-sm mb-4">
                     <Sparkles size={14} className="text-[#bdf500]" />
-                    Settled in ~6 seconds via Polkadot Hub
+                    Settled in ~6 seconds via Algorand
                   </div>
                   {explorerUrl && (
                     <a

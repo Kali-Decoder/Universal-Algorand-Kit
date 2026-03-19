@@ -1,6 +1,6 @@
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from 'wagmi'
 
-const POLKADOT_CHAIN_ID = 420420417
+const ALGORAND_CHAIN_ID = 420420417
 
 export function useWallet() {
   const { address, isConnected, chainId } = useAccount()
@@ -8,7 +8,7 @@ export function useWallet() {
   const { disconnect } = useDisconnect()
   const { switchChain } = useSwitchChain()
 
-  const isCorrectNetwork = chainId === POLKADOT_CHAIN_ID
+  const isCorrectNetwork = chainId === ALGORAND_CHAIN_ID
 
   const shortAddress = address
     ? `${address.slice(0, 6)}...${address.slice(-4)}`
@@ -19,8 +19,8 @@ export function useWallet() {
     if (connector) connect({ connector })
   }
 
-  function switchToPolkadot() {
-    switchChain({ chainId: POLKADOT_CHAIN_ID })
+  function switchToAlgorand() {
+    switchChain({ chainId: ALGORAND_CHAIN_ID })
   }
 
   return {
@@ -30,7 +30,7 @@ export function useWallet() {
     isCorrectNetwork,
     connect: connectWallet,
     disconnect,
-    switchToPolkadot,
+    switchToAlgorand,
     shortAddress,
   }
 }

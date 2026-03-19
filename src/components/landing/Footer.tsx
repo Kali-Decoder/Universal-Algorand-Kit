@@ -19,7 +19,7 @@ const links: Record<string, { label: string; href: string; external?: boolean }[
     { label: 'Architecture',    href: '/docs' },
   ],
   Community: [
-    { label: 'Discord',    href: 'https://polkadot-discord.w3f.tools/', external: true },
+    { label: 'Discord',    href: 'https://discord.gg/algorand', external: true },
     { label: 'X',    href: 'https://x.com/itsNikku876', external: true },
     { label: 'Blog',       href: `${GITHUB}#readme`, external: true },
     { label: 'Changelog',  href: `${GITHUB}/releases`, external: true },
@@ -46,7 +46,7 @@ export default function Footer() {
               <a href="https://x.com/itsNikku876" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#8e9191] hover:text-white hover:border-[rgba(189,245,0,0.3)] transition-all duration-200">
                 <Twitter size={14} />
               </a>
-              <a href="https://polkadot-discord.w3f.tools/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#8e9191] hover:text-white hover:border-[rgba(189,245,0,0.3)] transition-all duration-200">
+              <a href="https://discord.gg/algorand" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#8e9191] hover:text-white hover:border-[rgba(189,245,0,0.3)] transition-all duration-200">
                 <MessageCircle size={14} />
               </a>
             </div>

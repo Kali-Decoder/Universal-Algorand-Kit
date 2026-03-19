@@ -318,7 +318,7 @@ export default function AppDownload() {
                         </div>
                         <div className="flex items-center gap-1.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse inline-block" />
-                          <p className="text-[#bdf500] text-[0.58rem] font-medium">Polkadot Hub · Live</p>
+                          <p className="text-[#bdf500] text-[0.58rem] font-medium">Algorand · Live</p>
                         </div>
 
                         {/* Mini chart */}

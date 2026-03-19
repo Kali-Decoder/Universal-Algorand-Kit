@@ -189,7 +189,7 @@ export default function AppSettings() {
                 </div>
                 <div>
                   <div className="text-white text-sm font-mono font-semibold">{shortAddress}</div>
-                  <div className="text-[#8e9191] text-xs">Polkadot Hub Testnet</div>
+                  <div className="text-[#8e9191] text-xs">Algorand Testnet</div>
                   {address && (
                     <a
                       href={`https://assethub-paseo.subscan.io/account/${address}`}
