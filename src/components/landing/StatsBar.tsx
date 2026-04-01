@@ -16,13 +16,13 @@ export default function StatsBar() {
   ];
 
   return (
-    <div className="border-y border-white/[0.07] bg-[#060606] overflow-hidden">
+    <div className="border-y border-white/[0.07] bg-[var(--color-surface-2)] overflow-hidden">
       <div className="stats-marquee flex py-4">
         {[...stats, ...stats, ...stats].map((stat, i) => (
           <div key={i} className="flex items-center gap-3 shrink-0 px-8">
-            <span className="text-[#747878] text-[0.72rem] font-medium whitespace-nowrap">{stat.label}</span>
+            <span className="text-[var(--color-muted-2)] text-[0.72rem] font-medium whitespace-nowrap">{stat.label}</span>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="text-[#bdf500] text-[0.78rem] font-bold font-mono whitespace-nowrap">{stat.value}</span>
+            <span className="text-[var(--color-accent)] text-[0.78rem] font-bold font-mono whitespace-nowrap">{stat.value}</span>
           </div>
         ))}
       </div>

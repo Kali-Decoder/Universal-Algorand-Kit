@@ -65,42 +65,42 @@ export default function NotificationBell() {
     <div className="relative" ref={panelRef}>
       <button
         onClick={handleOpen}
-        className="relative text-[#8e9191] hover:text-white transition-colors p-2 rounded-xl hover:bg-white/[0.05]"
+        className="relative text-[var(--color-muted)] hover:text-white transition-colors p-2 rounded-xl hover:bg-white/[0.05]"
         aria-label="Notifications"
       >
         <Bell size={18} />
         {unread > 0 && (
-          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[#bdf500] rounded-full" />
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--color-accent)] rounded-full" />
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-12 w-80 bg-[#0a0a0a] border border-white/[0.1] rounded-2xl shadow-2xl z-50 overflow-hidden">
+        <div className="absolute right-0 top-12 w-80 bg-[var(--color-surface-1)] border border-white/[0.1] rounded-2xl shadow-2xl z-50 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.07]">
             <span className="text-white font-semibold text-sm">Notifications</span>
-            <button onClick={() => setOpen(false)} className="text-[#8e9191] hover:text-white transition-colors">
+            <button onClick={() => setOpen(false)} className="text-[var(--color-muted)] hover:text-white transition-colors">
               <X size={15} />
             </button>
           </div>
 
           {notifications.length === 0 ? (
-            <div className="px-4 py-8 text-center text-[#8e9191] text-sm">
+            <div className="px-4 py-8 text-center text-[var(--color-muted)] text-sm">
               No transfers yet. Send your first remittance!
             </div>
           ) : (
             <ul className="max-h-72 overflow-y-auto divide-y divide-white/[0.05]">
               {notifications.map((n) => (
                 <li key={n.id} className="flex items-start gap-3 px-4 py-3 hover:bg-white/[0.03] transition-colors">
-                  <CheckCircle2 size={15} className="text-[#bdf500] shrink-0 mt-0.5" />
+                  <CheckCircle2 size={15} className="text-[var(--color-accent)] shrink-0 mt-0.5" />
                   <div className="flex-1 min-w-0">
                     <p className="text-white text-xs font-semibold">{n.title}</p>
-                    <p className="text-[#8e9191] text-xs mt-0.5">{n.body}</p>
+                    <p className="text-[var(--color-muted)] text-xs mt-0.5">{n.body}</p>
                     {n.txHash && (
                       <a
                         href={`https://assethub-paseo.subscan.io/extrinsic/${n.txHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#bdf500] text-[0.7rem] hover:underline mt-1 inline-block"
+                        className="text-[var(--color-accent)] text-[0.7rem] hover:underline mt-1 inline-block"
                       >
                         View on explorer →
                       </a>

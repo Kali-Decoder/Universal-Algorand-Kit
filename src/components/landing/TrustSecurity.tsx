@@ -21,7 +21,7 @@ export default function TrustSecurity() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-[#747878] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4"
+          className="text-[var(--color-muted-2)] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4"
         >
           Security first
         </motion.p>
@@ -43,7 +43,7 @@ export default function TrustSecurity() {
               </span>
               <span
                 className="big-display-text leading-none tracking-tight select-none"
-                style={{ color: '#bdf500', opacity: 0.1 }}
+                style={{ color: 'var(--color-accent)', opacity: 0.1 }}
                 aria-hidden
               >
                 {word.ghost}
@@ -62,13 +62,13 @@ export default function TrustSecurity() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-4 md:p-5 hover:bg-white/[0.05] hover:border-[rgba(189,245,0,0.2)] transition-colors duration-300"
+              className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-4 md:p-5 hover:bg-white/[0.05] hover:border-[var(--accent-20)] transition-colors duration-300"
             >
-              <div className="w-6 h-6 rounded-full bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] flex items-center justify-center mb-3">
-                <span className="text-[#bdf500] text-[0.45rem]">●</span>
+              <div className="w-6 h-6 rounded-full bg-[var(--accent-08)] border border-[var(--accent-20)] flex items-center justify-center mb-3">
+                <span className="text-[var(--color-accent)] text-[0.45rem]">●</span>
               </div>
               <div className="text-white font-bold text-sm leading-tight mb-1">{badge.label}</div>
-              <div className="text-[#8e9191] text-[0.72rem] leading-relaxed">{badge.desc}</div>
+              <div className="text-[var(--color-muted)] text-[0.72rem] leading-relaxed">{badge.desc}</div>
             </motion.div>
           ))}
         </div>
@@ -79,13 +79,13 @@ export default function TrustSecurity() {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 py-6 border-t border-white/[0.06]"
         >
-          <div className="flex items-center gap-2.5 text-[#8e9191] text-[0.78rem]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500]" />
+          <div className="flex items-center gap-2.5 text-[var(--color-muted)] text-[0.78rem]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
             All contracts are open source and auditable
           </div>
           <span className="text-white/[0.15] hidden sm:inline">·</span>
-          <div className="flex items-center gap-2.5 text-[#8e9191] text-[0.78rem]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500]" />
+          <div className="flex items-center gap-2.5 text-[var(--color-muted)] text-[0.78rem]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
             Intent execution is verifiable on-chain.
           </div>
         </motion.div>

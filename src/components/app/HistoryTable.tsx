@@ -33,7 +33,7 @@ export default function HistoryTable() {
     return (
       <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-white font-bold text-xl mb-6">Transfer History</h2>
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl py-16 text-center text-[#8e9191]">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl py-16 text-center text-[var(--color-muted)]">
           Connect your wallet to see your transfers
         </div>
       </div>
@@ -53,8 +53,8 @@ export default function HistoryTable() {
               onClick={() => setFilter(f)}
               className={`px-4 py-1.5 rounded-xl text-sm font-medium transition-colors ${
                 filter === f
-                  ? 'bg-[#bdf500] text-black font-bold'
-                  : 'bg-white/[0.05] text-[#8e9191] hover:text-white hover:bg-white/[0.08]'
+                  ? 'bg-[var(--color-accent)] text-black font-bold'
+                  : 'bg-white/[0.05] text-[var(--color-muted)] hover:text-white hover:bg-white/[0.08]'
               }`}
             >
               {f}
@@ -62,7 +62,7 @@ export default function HistoryTable() {
           ))}
           <button
             onClick={() => void refetch()}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium bg-white/[0.05] text-[#8e9191] hover:text-white hover:bg-white/[0.08] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium bg-white/[0.05] text-[var(--color-muted)] hover:text-white hover:bg-white/[0.08] transition-colors"
           >
             <RefreshCw size={13} className={isLoading ? 'animate-spin' : ''} />
             Refresh
@@ -70,8 +70,8 @@ export default function HistoryTable() {
         </div>
       </div>
 
-      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl overflow-hidden">
-        <div className="hidden md:grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto] gap-4 px-5 py-3 text-[#8e9191] text-xs font-semibold uppercase tracking-widest border-b border-white/[0.06]">
+      <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl overflow-hidden">
+        <div className="hidden md:grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto] gap-4 px-5 py-3 text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest border-b border-white/[0.06]">
           <span>Block</span>
           <span>Amount</span>
           <span>Corridor</span>
@@ -94,7 +94,7 @@ export default function HistoryTable() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-16 text-[#8e9191]">No transfers found</div>
+          <div className="text-center py-16 text-[var(--color-muted)]">No transfers found</div>
         ) : (
           filtered.map((transfer, i) => (
             <div key={transfer.transferId}>
@@ -107,20 +107,20 @@ export default function HistoryTable() {
               >
                 <div>
                   <div className="text-white text-sm font-medium">Block #{transfer.blockNumber}</div>
-                  <div className="text-[#8e9191] text-xs font-mono">{formatTxHash(transfer.txHash)}</div>
+                  <div className="text-[var(--color-muted)] text-xs font-mono">{formatTxHash(transfer.txHash)}</div>
                 </div>
                 <div>
                   <div className="text-white text-sm font-bold font-mono">{transfer.amountIn} {transfer.tokenSymbol}</div>
-                  <div className="text-[#bdf500] text-xs font-mono">{transfer.amountOut} {(() => {
+                  <div className="text-[var(--color-accent)] text-xs font-mono">{transfer.amountOut} {(() => {
                     const c = CORRIDORS.find(cor => calcCorridorId(cor.id).toLowerCase() === transfer.corridorId.toLowerCase());
                     return c?.currency ?? '';
                   })()}</div>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span>🇺🇸</span>
-                  <span className="text-[#8e9191]">→</span>
+                  <span className="text-[var(--color-muted)]">→</span>
                   <span>{findCorridorFlag(transfer.corridorId)}</span>
-                  <span className="text-[#8e9191] hidden md:inline">{transfer.corridorLabel.split('→')[1]?.trim()}</span>
+                  <span className="text-[var(--color-muted)] hidden md:inline">{transfer.corridorLabel.split('→')[1]?.trim()}</span>
                 </div>
                 <div className="hidden md:block">
                   {(() => {
@@ -128,22 +128,22 @@ export default function HistoryTable() {
                     const liveRate = c ? (rates?.[c.currency] ?? c.rate) : null;
                     const amtNum = parseFloat(transfer.amountIn);
                     if (!c || ratesLoading || liveRate === null || isNaN(amtNum)) {
-                      return <span className="text-[#8e9191] text-sm font-mono">—</span>;
+                      return <span className="text-[var(--color-muted)] text-sm font-mono">—</span>;
                     }
                     return (
                       <div>
                         <div className="text-white text-sm font-mono">{(amtNum * liveRate).toFixed(2)} {c.currency}</div>
-                        <div className="text-[#4a4d4d] text-xs">at today's rate</div>
+                        <div className="text-[var(--color-muted-3)] text-xs">at today's rate</div>
                       </div>
                     );
                   })()}
                 </div>
                 <div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-[rgba(189,245,0,0.08)] text-[#bdf500] border border-[rgba(189,245,0,0.2)]">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-[var(--accent-08)] text-[var(--color-accent)] border border-[var(--accent-20)]">
                     Completed
                   </span>
                 </div>
-                <div className="text-[#8e9191] text-sm font-mono">{transfer.fee} USDC</div>
+                <div className="text-[var(--color-muted)] text-sm font-mono">{transfer.fee} USDC</div>
               </motion.button>
 
               <AnimatePresence>
@@ -156,20 +156,20 @@ export default function HistoryTable() {
                   >
                     <div className="px-5 py-4 bg-black border-b border-white/[0.05] grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                       <div>
-                        <div className="text-[#8e9191] text-xs mb-1">Recipient</div>
+                        <div className="text-[var(--color-muted)] text-xs mb-1">Recipient</div>
                         <div className="text-white font-mono text-xs">{transfer.recipient.slice(0, 10)}...{transfer.recipient.slice(-6)}</div>
                       </div>
                       <div>
-                        <div className="text-[#8e9191] text-xs mb-1">Settlement</div>
-                        <div className="text-[#bdf500] font-mono font-semibold">~6s</div>
+                        <div className="text-[var(--color-muted)] text-xs mb-1">Settlement</div>
+                        <div className="text-[var(--color-accent)] font-mono font-semibold">~6s</div>
                       </div>
                       <div>
-                        <div className="text-[#8e9191] text-xs mb-1">Tx Hash</div>
+                        <div className="text-[var(--color-muted)] text-xs mb-1">Tx Hash</div>
                         <a
                           href={`${EXPLORER_BASE}${transfer.txHash}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-[#bdf500] font-mono hover:text-[#d8ff7b]"
+                          className="flex items-center gap-1 text-[var(--color-accent)] font-mono hover:text-[var(--color-accent-hover)]"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {formatTxHash(transfer.txHash)}
@@ -177,7 +177,7 @@ export default function HistoryTable() {
                         </a>
                       </div>
                       <div>
-                        <div className="text-[#8e9191] text-xs mb-1">Total fee</div>
+                        <div className="text-[var(--color-muted)] text-xs mb-1">Total fee</div>
                         <div className="text-white font-mono">{transfer.fee} USDC</div>
                       </div>
                     </div>

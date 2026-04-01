@@ -68,11 +68,11 @@ export default function LiquidityPool() {
             key={stat.label}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-5"
+            className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-5"
           >
-            <div className="flex items-center gap-2 mb-3 text-[#bdf500]">
+            <div className="flex items-center gap-2 mb-3 text-[var(--color-accent)]">
               {stat.icon}
-              <span className="text-[#8e9191] text-sm">{stat.label}</span>
+              <span className="text-[var(--color-muted)] text-sm">{stat.label}</span>
             </div>
             <div className="text-white font-black text-2xl font-mono">{stat.value}</div>
           </motion.div>
@@ -80,10 +80,10 @@ export default function LiquidityPool() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-6">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-6">
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-white font-bold">Your Position</h3>
-            <div className="flex items-center gap-1.5 bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] text-[#bdf500] text-xs font-semibold px-3 py-1 rounded-full">
+            <div className="flex items-center gap-1.5 bg-[var(--accent-08)] border border-[var(--accent-20)] text-[var(--color-accent)] text-xs font-semibold px-3 py-1 rounded-full">
               <Info size={12} />
               ERC4626 Vault
             </div>
@@ -91,38 +91,38 @@ export default function LiquidityPool() {
 
           <div className="space-y-4">
             <div className="bg-black rounded-xl p-4 border border-white/[0.06]">
-              <div className="text-[#8e9191] text-xs mb-1">Your value</div>
+              <div className="text-[var(--color-muted)] text-xs mb-1">Your value</div>
               <div className="text-white text-2xl font-black font-mono">
-                {isConnected ? formatUSDC(userAssetValue) : '0.00'} <span className="text-[#8e9191] text-sm font-normal">USDC</span>
+                {isConnected ? formatUSDC(userAssetValue) : '0.00'} <span className="text-[var(--color-muted)] text-sm font-normal">USDC</span>
               </div>
             </div>
             <div className="bg-black rounded-xl p-4 border border-white/[0.06]">
-              <div className="text-[#8e9191] text-xs mb-1">Your shares</div>
-              <div className="text-[#bdf500] text-2xl font-black font-mono">
-                {isConnected ? userShares.toString() : '0'} <span className="text-[#8e9191] text-sm font-normal">rfLP</span>
+              <div className="text-[var(--color-muted)] text-xs mb-1">Your shares</div>
+              <div className="text-[var(--color-accent)] text-2xl font-black font-mono">
+                {isConnected ? userShares.toString() : '0'} <span className="text-[var(--color-muted)] text-sm font-normal">rfLP</span>
               </div>
             </div>
             <div className="bg-black rounded-xl p-4 border border-white/[0.06] flex items-center justify-between">
               <div>
-                <div className="text-[#8e9191] text-xs mb-0.5">Share of pool</div>
+                <div className="text-[var(--color-muted)] text-xs mb-0.5">Share of pool</div>
                 <div className="text-white font-bold font-mono">{isConnected ? sharePercent : '0.00%'}</div>
               </div>
               <div>
-                <div className="text-[#8e9191] text-xs mb-0.5">Total shares</div>
-                <div className="text-[#bdf500] font-bold font-mono text-sm">{isConnected ? totalSharesStr : '—'}</div>
+                <div className="text-[var(--color-muted)] text-xs mb-0.5">Total shares</div>
+                <div className="text-[var(--color-accent)] font-bold font-mono text-sm">{isConnected ? totalSharesStr : '—'}</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-6">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-6">
           <div className="flex gap-2 mb-5">
             <button
               onClick={() => setTab('deposit')}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                 tab === 'deposit'
-                  ? 'bg-[#bdf500] text-black'
-                  : 'bg-white/[0.05] text-[#8e9191] hover:bg-white/[0.08] hover:text-white'
+                  ? 'bg-[var(--color-accent)] text-black'
+                  : 'bg-white/[0.05] text-[var(--color-muted)] hover:bg-white/[0.08] hover:text-white'
               }`}
             >
               <ArrowDownToLine size={16} />
@@ -132,8 +132,8 @@ export default function LiquidityPool() {
               onClick={() => setTab('withdraw')}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                 tab === 'withdraw'
-                  ? 'bg-[#bdf500] text-black'
-                  : 'bg-white/[0.05] text-[#8e9191] hover:bg-white/[0.08] hover:text-white'
+                  ? 'bg-[var(--color-accent)] text-black'
+                  : 'bg-white/[0.05] text-[var(--color-muted)] hover:bg-white/[0.08] hover:text-white'
               }`}
             >
               <ArrowUpFromLine size={16} />
@@ -142,10 +142,10 @@ export default function LiquidityPool() {
           </div>
 
           <div className="mb-4">
-            <label className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest mb-2 block">
+            <label className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest mb-2 block">
               Amount (USDC)
             </label>
-            <div className="bg-black border border-white/[0.08] focus-within:border-[rgba(189,245,0,0.35)] rounded-xl px-4 py-3 flex items-center gap-3 transition-colors">
+            <div className="bg-black border border-white/[0.08] focus-within:border-[var(--accent-35)] rounded-xl px-4 py-3 flex items-center gap-3 transition-colors">
               <input
                 type="number"
                 placeholder="0.00"
@@ -156,25 +156,25 @@ export default function LiquidityPool() {
               {tab === 'deposit' && (
                 <button
                   onClick={() => setAmount(walletBalance)}
-                  className="text-[#bdf500] text-xs font-bold hover:text-[#d8ff7b]"
+                  className="text-[var(--color-accent)] text-xs font-bold hover:text-[var(--color-accent-hover)]"
                 >
                   MAX
                 </button>
               )}
             </div>
             {tab === 'deposit' && isConnected && (
-              <div className="text-[#8e9191] text-xs mt-1.5 font-mono">Wallet: {walletBalance} USDC</div>
+              <div className="text-[var(--color-muted)] text-xs mt-1.5 font-mono">Wallet: {walletBalance} USDC</div>
             )}
           </div>
 
           <div className="bg-black rounded-xl p-3 border border-white/[0.06] mb-4 text-sm space-y-2">
-            <div className="flex justify-between text-[#8e9191]">
+            <div className="flex justify-between text-[var(--color-muted)]">
               <span>Pool share after</span>
               <span className="text-white">{sharePercent}</span>
             </div>
-            <div className="flex justify-between text-[#8e9191]">
+            <div className="flex justify-between text-[var(--color-muted)]">
               <span>Estimated APY</span>
-              <span className="text-[#bdf500] font-semibold">{apy}</span>
+              <span className="text-[var(--color-accent)] font-semibold">{apy}</span>
             </div>
           </div>
 
@@ -187,7 +187,7 @@ export default function LiquidityPool() {
           <button
             onClick={handleAction}
             disabled={!amount || parseFloat(amount) <= 0 || !isConnected || !isCorrectNetwork || txPending}
-            className="w-full bg-[#bdf500] hover:bg-[#d8ff7b] disabled:bg-white/[0.07] disabled:text-white/30 text-black font-bold py-3.5 rounded-xl transition-all capitalize"
+            className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] disabled:bg-white/[0.07] disabled:text-white/30 text-black font-bold py-3.5 rounded-xl transition-all capitalize"
           >
             {txPending && <Loader2 size={14} className="inline mr-2 animate-spin" />}
             {!isConnected ? 'Connect Wallet' : !isCorrectNetwork ? 'Switch Network' : txPending ? (tab === 'deposit' ? 'Depositing...' : 'Withdrawing...') : (tab === 'deposit' ? 'Deposit USDC' : 'Withdraw USDC')}

@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between h-14 md:h-16 px-5 md:px-8 lg:px-12">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-[#bdf500] text-lg font-black leading-none select-none">●</span>
+          <span className="text-[var(--color-accent)] text-lg font-black leading-none select-none">●</span>
           <span className="text-white font-extrabold text-[0.9rem] tracking-tight">Universal Algo Kit</span>
         </Link>
 
@@ -41,14 +41,14 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="text-[#8e9191] hover:text-white transition-colors duration-200 text-[0.78rem] font-medium px-5"
+              className="text-[var(--color-muted)] hover:text-white transition-colors duration-200 text-[0.78rem] font-medium px-5"
             >
               {item.label}
             </button>
           ))}
           <Link
             to="/docs"
-            className="text-[#8e9191] hover:text-white transition-colors duration-200 text-[0.78rem] font-medium px-5"
+            className="text-[var(--color-muted)] hover:text-white transition-colors duration-200 text-[0.78rem] font-medium px-5"
           >
             Docs
           </Link>
@@ -58,14 +58,14 @@ export default function Navbar() {
           <button
             type="button"
             aria-disabled="true"
-            className="text-[#8e9191] text-[0.78rem] font-medium px-4 transition-colors cursor-not-allowed opacity-60"
+            className="text-[var(--color-muted)] text-[0.78rem] font-medium px-4 transition-colors cursor-not-allowed opacity-60"
           >
             Log in
           </button>
           {/* <button
             type="button"
             aria-disabled="true"
-            className="bg-[#bdf500] hover:bg-[#d8ff7b] text-black font-bold text-[0.78rem] px-5 py-2.5 rounded-full transition-all duration-200"
+            className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-[0.78rem] px-5 py-2.5 rounded-full transition-all duration-200"
           >
             Launch App
           </button> */}
@@ -82,7 +82,7 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="text-[#8e9191] hover:text-white transition-colors text-sm font-medium text-left py-4"
+              className="text-[var(--color-muted)] hover:text-white transition-colors text-sm font-medium text-left py-4"
             >
               {item.label}
             </button>
@@ -90,7 +90,7 @@ export default function Navbar() {
           {/* <button
             type="button"
             aria-disabled="true"
-            className="mt-5 bg-[#bdf500] text-black font-bold py-4 rounded-full text-sm opacity-70 cursor-not-allowed"
+            className="mt-5 bg-[var(--color-accent)] text-black font-bold py-4 rounded-full text-sm opacity-70 cursor-not-allowed"
           >
             Launch App
           </button> */}

@@ -23,23 +23,23 @@ export default function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
   return (
     <aside
-      className={`hidden md:flex flex-col bg-[#060606] border-r border-white/[0.08] transition-all duration-300 ${
+      className={`hidden md:flex flex-col bg-[var(--color-surface-2)] border-r border-white/[0.08] transition-all duration-300 ${
         collapsed ? 'w-16' : 'w-56'
       } min-h-screen`}
     >
       <div className={`flex items-center p-4 border-b border-white/[0.08] ${collapsed ? 'justify-center' : 'justify-between'}`}>
         {!collapsed && (
           <button onClick={() => navigate('/')} className="flex items-center gap-2 group">
-            <span className="text-[#bdf500] text-xl font-bold">●</span>
+            <span className="text-[var(--color-accent)] text-xl font-bold">●</span>
             <span className="text-white font-extrabold text-base tracking-tight">RemitStar</span>
           </button>
         )}
         {collapsed && (
-          <span className="text-[#bdf500] text-xl font-bold">●</span>
+          <span className="text-[var(--color-accent)] text-xl font-bold">●</span>
         )}
         <button
           onClick={onToggle}
-          className="text-[#8e9191] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/[0.05]"
+          className="text-[var(--color-muted)] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/[0.05]"
         >
           <ChevronLeft size={16} className={`transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`} />
         </button>
@@ -53,8 +53,8 @@ export default function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
                 isActive
-                  ? 'bg-[rgba(189,245,0,0.1)] text-[#bdf500] border border-[rgba(189,245,0,0.2)]'
-                  : 'text-[#8e9191] hover:text-white hover:bg-white/[0.05]'
+                  ? 'bg-[var(--accent-10)] text-[var(--color-accent)] border border-[var(--accent-20)]'
+                  : 'text-[var(--color-muted)] hover:text-white hover:bg-white/[0.05]'
               } ${collapsed ? 'justify-center' : ''}`
             }
             title={collapsed ? item.label : undefined}
@@ -68,7 +68,7 @@ export default function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       <div className={`p-3 border-t border-white/[0.08] ${collapsed ? 'flex justify-center' : ''}`}>
         <button
           onClick={() => navigate('/')}
-          className={`flex items-center gap-2 text-[#8e9191] hover:text-white transition-colors text-sm py-2 px-3 rounded-xl hover:bg-white/[0.05] ${collapsed ? 'justify-center' : ''}`}
+          className={`flex items-center gap-2 text-[var(--color-muted)] hover:text-white transition-colors text-sm py-2 px-3 rounded-xl hover:bg-white/[0.05] ${collapsed ? 'justify-center' : ''}`}
         >
           <ArrowLeft size={16} />
           {!collapsed && <span>Back to site</span>}

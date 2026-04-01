@@ -13,13 +13,13 @@ function AppStoreBadge({ store }: { store: 'apple' | 'google' }) {
     <div
       className="relative flex items-center gap-3.5 px-5 py-3.5 rounded-2xl overflow-hidden cursor-not-allowed select-none"
       style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'var(--white-03)',
+        border: '1px solid var(--white-07)',
       }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'rgba(0,0,0,0.2)' }}
+        style={{ background: 'var(--black-20)' }}
       />
 
       {isApple ? (
@@ -28,10 +28,10 @@ function AppStoreBadge({ store }: { store: 'apple' | 'google' }) {
         </svg>
       ) : (
         <svg viewBox="0 0 24 24" className="w-7 h-7 shrink-0 opacity-30" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3.18 23.77c.24.13.5.19.78.17l.06-.04L13.64 12 4.02.1l-.06-.03C3.7.05 3.44.01 3.18.15c-.52.28-.78.87-.78 1.69v20.3c0 .81.26 1.4.78 1.63z" fill="#EA4335"/>
-          <path d="M17.09 15.83l-2.95-2.95-1.5 1.5 3.07 3.07 4.1-2.36a1.24 1.24 0 0 0 0-2.18l-4.1-2.36 1.5 1.5 2.95 2.95-3.07 1.77z" fill="#FBBC04"/>
-          <path d="M3.18.15c.24-.13.5-.19.78-.17l.06.04 9.62 9.63-2.95 2.95L3.18.15z" fill="#4285F4"/>
-          <path d="M3.24 23.94l.06-.04 7.39-7.39 2.95 2.95L3.24 23.94z" fill="#34A853"/>
+          <path d="M3.18 23.77c.24.13.5.19.78.17l.06-.04L13.64 12 4.02.1l-.06-.03C3.7.05 3.44.01 3.18.15c-.52.28-.78.87-.78 1.69v20.3c0 .81.26 1.4.78 1.63z" fill="var(--color-google-red)"/>
+          <path d="M17.09 15.83l-2.95-2.95-1.5 1.5 3.07 3.07 4.1-2.36a1.24 1.24 0 0 0 0-2.18l-4.1-2.36 1.5 1.5 2.95 2.95-3.07 1.77z" fill="var(--color-google-yellow)"/>
+          <path d="M3.18.15c.24-.13.5-.19.78-.17l.06.04 9.62 9.63-2.95 2.95L3.18.15z" fill="var(--color-google-blue)"/>
+          <path d="M3.24 23.94l.06-.04 7.39-7.39 2.95 2.95L3.24 23.94z" fill="var(--color-google-green)"/>
         </svg>
       )}
 
@@ -46,7 +46,7 @@ function AppStoreBadge({ store }: { store: 'apple' | 'google' }) {
 
       <span
         className="ml-auto text-[0.55rem] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0"
-        style={{ color: '#bdf500', background: 'rgba(189,245,0,0.1)', border: '1px solid rgba(189,245,0,0.2)' }}
+        style={{ color: 'var(--color-accent)', background: 'var(--accent-10)', border: '1px solid var(--accent-20)' }}
       >
         Soon
       </span>
@@ -75,13 +75,13 @@ function NotifyForm() {
         >
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-            style={{ background: 'rgba(189,245,0,0.12)', border: '1px solid rgba(189,245,0,0.3)' }}
+            style={{ background: 'var(--accent-12)', border: '1px solid var(--accent-30)' }}
           >
-            <Check size={14} className="text-[#bdf500]" />
+            <Check size={14} className="text-[var(--color-accent)]" />
           </div>
           <div>
             <p className="text-white text-sm font-semibold">You're on the list!</p>
-            <p className="text-[#747878] text-[0.75rem]">We'll notify you when the app launches.</p>
+            <p className="text-[var(--color-muted-2)] text-[0.75rem]">We'll notify you when the app launches.</p>
           </div>
         </motion.div>
       ) : (
@@ -99,15 +99,15 @@ function NotifyForm() {
             placeholder="your@email.com"
             className="flex-1 bg-transparent text-white text-sm outline-none rounded-xl px-4 py-2.5 min-w-0"
             style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'var(--white-04)',
+              border: '1px solid var(--white-10)',
             }}
           />
           <motion.button
             type="submit"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center gap-1.5 bg-[#bdf500] hover:bg-[#d8ff7b] text-black font-bold text-sm px-4 py-2.5 rounded-xl transition-colors shrink-0"
+            className="flex items-center gap-1.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-sm px-4 py-2.5 rounded-xl transition-colors shrink-0"
           >
             <Bell size={13} />
             Notify me
@@ -130,7 +130,7 @@ export default function AppDownload() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(189,245,0,0.03) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, var(--accent-03) 0%, transparent 70%)',
         }}
       />
 
@@ -142,21 +142,21 @@ export default function AppDownload() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative rounded-[2rem] overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(14,14,14,1) 0%, rgba(10,10,10,1) 100%)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'linear-gradient(135deg, var(--black-14100) 0%, var(--black-10100) 100%)',
+            border: '1px solid var(--white-08)',
           }}
         >
           <div
             className="absolute top-0 left-0 right-0 h-px"
-            style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(189,245,0,0.4) 50%, transparent 95%)' }}
+            style={{ background: 'linear-gradient(90deg, transparent 5%, var(--accent-40) 50%, transparent 95%)' }}
           />
           <div
             className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(189,245,0,0.06) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, var(--accent-06) 0%, transparent 70%)' }}
           />
           <div
             className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full blur-3xl pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(189,245,0,0.04) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, var(--accent-04) 0%, transparent 70%)' }}
           />
 
           <div className="relative grid lg:grid-cols-2 gap-0">
@@ -170,9 +170,9 @@ export default function AppDownload() {
                 <div className="flex items-center gap-2.5 mb-6">
                   <span
                     className="inline-flex items-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full"
-                    style={{ color: '#bdf500', background: 'rgba(189,245,0,0.08)', border: '1px solid rgba(189,245,0,0.2)' }}
+                    style={{ color: 'var(--color-accent)', background: 'var(--accent-08)', border: '1px solid var(--accent-20)' }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
                     Coming Soon
                   </span>
                 </div>
@@ -181,7 +181,7 @@ export default function AppDownload() {
                   The app<br />is coming.
                 </h2>
 
-                <p className="text-[#8e9191] text-[0.92rem] leading-relaxed mb-8 max-w-[34ch]">
+                <p className="text-[var(--color-muted)] text-[0.92rem] leading-relaxed mb-8 max-w-[34ch]">
                   We're putting the final touches on the RemitStar mobile experience. Be the first to know when it's ready.
                 </p>
 
@@ -197,17 +197,17 @@ export default function AppDownload() {
                     >
                       <div
                         className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                        style={{ background: 'rgba(189,245,0,0.08)', border: '1px solid rgba(189,245,0,0.18)' }}
+                        style={{ background: 'var(--accent-08)', border: '1px solid var(--accent-18)' }}
                       >
-                        <Icon size={12} className="text-[#bdf500]" />
+                        <Icon size={12} className="text-[var(--color-accent)]" />
                       </div>
-                      <span className="text-[#a9acab] text-[0.85rem]">{label}</span>
+                      <span className="text-[var(--color-muted-5)] text-[0.85rem]">{label}</span>
                     </motion.div>
                   ))}
                 </div>
 
                 <div className="mb-10">
-                  <p className="text-[#747878] text-[0.72rem] font-semibold uppercase tracking-wider mb-3">
+                  <p className="text-[var(--color-muted-2)] text-[0.72rem] font-semibold uppercase tracking-wider mb-3">
                     Get notified at launch
                   </p>
                   <NotifyForm />
@@ -223,7 +223,7 @@ export default function AppDownload() {
             <div className="relative flex items-center justify-center py-16 lg:py-10 lg:min-h-[560px] overflow-visible">
               <div
                 className="absolute inset-y-0 left-0 w-px"
-                style={{ background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)' }}
+                style={{ background: 'linear-gradient(180deg, transparent, var(--white-06) 30%, var(--white-06) 70%, transparent)' }}
               />
 
               <motion.div
@@ -242,25 +242,25 @@ export default function AppDownload() {
                   <div
                     className="relative w-[260px] rounded-[3rem] overflow-hidden"
                     style={{
-                      background: 'linear-gradient(160deg, #161616 0%, #0a0a0a 100%)',
-                      border: '1.5px solid rgba(255,255,255,0.12)',
-                      boxShadow: '0 60px 120px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 80px rgba(189,245,0,0.08)',
+                      background: 'linear-gradient(160deg, var(--color-surface-5) 0%, var(--color-surface-1) 100%)',
+                      border: '1.5px solid var(--white-12)',
+                      boxShadow: '0 60px 120px var(--black-90), 0 0 0 1px var(--white-04) inset, 0 0 80px var(--accent-08)',
                     }}
                   >
                     {/* Screen glare */}
                     <div
                       className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none z-20 rounded-t-[3rem]"
-                      style={{ background: 'linear-gradient(160deg, rgba(255,255,255,0.05) 0%, transparent 60%)' }}
+                      style={{ background: 'linear-gradient(160deg, var(--white-05) 0%, transparent 60%)' }}
                     />
 
                     {/* Dynamic island */}
                     <div className="relative z-30 flex justify-center pt-3.5 pb-1">
                       <div
                         className="w-24 h-6 rounded-full flex items-center justify-center gap-1.5"
-                        style={{ background: '#000' }}
+                        style={{ background: 'var(--color-bg)' }}
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1a1a1a]" />
-                        <div className="w-3 h-3 rounded-full bg-[#111]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-surface-6)]" />
+                        <div className="w-3 h-3 rounded-full bg-[var(--color-surface-7)]" />
                       </div>
                     </div>
 
@@ -288,14 +288,14 @@ export default function AppDownload() {
                       {/* Header */}
                       <div className="flex items-center justify-between mb-5">
                         <div>
-                          <p className="text-[#5a5d5d] text-[0.58rem] tracking-wide">Good morning</p>
+                          <p className="text-[var(--color-muted-4)] text-[0.58rem] tracking-wide">Good morning</p>
                           <p className="text-white text-[0.95rem] font-bold leading-tight">Ana Martinez</p>
                         </div>
                         <div
                           className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold"
-                          style={{ background: 'linear-gradient(135deg, rgba(189,245,0,0.25), rgba(189,245,0,0.08))', border: '1.5px solid rgba(189,245,0,0.3)' }}
+                          style={{ background: 'linear-gradient(135deg, var(--accent-25), var(--accent-08))', border: '1.5px solid var(--accent-30)' }}
                         >
-                          <span className="text-[#bdf500] text-[0.7rem] font-black">AM</span>
+                          <span className="text-[var(--color-accent)] text-[0.7rem] font-black">AM</span>
                         </div>
                       </div>
 
@@ -303,22 +303,22 @@ export default function AppDownload() {
                       <div
                         className="rounded-2xl p-4 mb-4 relative overflow-hidden"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(189,245,0,0.14) 0%, rgba(189,245,0,0.04) 50%, rgba(0,0,0,0) 100%)',
-                          border: '1px solid rgba(189,245,0,0.2)',
+                          background: 'linear-gradient(135deg, var(--accent-14) 0%, var(--accent-04) 50%, var(--black-00) 100%)',
+                          border: '1px solid var(--accent-20)',
                         }}
                       >
                         <div
                           className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl pointer-events-none"
-                          style={{ background: 'rgba(189,245,0,0.12)' }}
+                          style={{ background: 'var(--accent-12)' }}
                         />
-                        <p className="text-[#8e9191] text-[0.55rem] uppercase tracking-widest mb-1.5">Total Balance</p>
+                        <p className="text-[var(--color-muted)] text-[0.55rem] uppercase tracking-widest mb-1.5">Total Balance</p>
                         <div className="flex items-end gap-1.5 mb-2">
                           <p className="text-white text-[1.9rem] font-black font-mono leading-none">$2,400</p>
-                          <span className="text-[#bdf500] text-[0.6rem] font-bold mb-1">USDC</span>
+                          <span className="text-[var(--color-accent)] text-[0.6rem] font-bold mb-1">USDC</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse inline-block" />
-                          <p className="text-[#bdf500] text-[0.58rem] font-medium">Algorand · Live</p>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse inline-block" />
+                          <p className="text-[var(--color-accent)] text-[0.58rem] font-medium">Algorand · Live</p>
                         </div>
 
                         {/* Mini chart */}
@@ -329,7 +329,7 @@ export default function AppDownload() {
                               className="flex-1 rounded-sm"
                               style={{
                                 height: `${h}%`,
-                                background: i === 11 ? '#bdf500' : `rgba(189,245,0,${0.1 + i * 0.04})`,
+                                background: i === 11 ? 'var(--color-accent)' : `rgba(var(--accent-rgb), ${0.1 + i * 0.04})`,
                               }}
                             />
                           ))}
@@ -347,44 +347,44 @@ export default function AppDownload() {
                             key={action.label}
                             className="rounded-xl py-2.5 flex flex-col items-center gap-1"
                             style={{
-                              background: action.active ? 'rgba(189,245,0,0.1)' : 'rgba(255,255,255,0.03)',
-                              border: `1px solid ${action.active ? 'rgba(189,245,0,0.25)' : 'rgba(255,255,255,0.06)'}`,
+                              background: action.active ? 'var(--accent-10)' : 'var(--white-03)',
+                              border: `1px solid ${action.active ? 'var(--accent-25)' : 'var(--white-06)'}`,
                             }}
                           >
-                            <span className={`text-sm font-bold ${action.active ? 'text-[#bdf500]' : 'text-white/40'}`}>{action.icon}</span>
-                            <span className={`text-[0.5rem] font-semibold ${action.active ? 'text-[#bdf500]' : 'text-white/30'}`}>{action.label}</span>
+                            <span className={`text-sm font-bold ${action.active ? 'text-[var(--color-accent)]' : 'text-white/40'}`}>{action.icon}</span>
+                            <span className={`text-[0.5rem] font-semibold ${action.active ? 'text-[var(--color-accent)]' : 'text-white/30'}`}>{action.label}</span>
                           </div>
                         ))}
                       </div>
 
                       {/* Recent transfers */}
-                      <p className="text-[#4a4d4d] text-[0.52rem] uppercase tracking-widest mb-2.5">Recent Transfers</p>
+                      <p className="text-[var(--color-muted-3)] text-[0.52rem] uppercase tracking-widest mb-2.5">Recent Transfers</p>
                       <div className="space-y-1.5">
                         {[
-                          { flag: '🇵🇪', name: 'Maria G.', city: 'Lima', amount: 'S/ 742', time: '6s', color: 'rgba(189,245,0,0.7)' },
-                          { flag: '🇲🇽', name: 'Carlos R.', city: 'CDMX', amount: 'MX$ 1.8k', time: '7s', color: 'rgba(189,245,0,0.5)' },
-                          { flag: '🇵🇭', name: 'Jose L.', city: 'Manila', amount: '₱ 5.5k', time: '5s', color: 'rgba(189,245,0,0.4)' },
+                          { flag: '🇵🇪', name: 'Maria G.', city: 'Lima', amount: 'S/ 742', time: '6s', color: 'var(--accent-70)' },
+                          { flag: '🇲🇽', name: 'Carlos R.', city: 'CDMX', amount: 'MX$ 1.8k', time: '7s', color: 'var(--accent-50)' },
+                          { flag: '🇵🇭', name: 'Jose L.', city: 'Manila', amount: '₱ 5.5k', time: '5s', color: 'var(--accent-40)' },
                         ].map((tx, i) => (
                           <div
                             key={i}
                             className="flex items-center justify-between rounded-xl px-3 py-2.5"
-                            style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.05)' }}
+                            style={{ background: 'var(--white-025)', border: '1px solid var(--white-05)' }}
                           >
                             <div className="flex items-center gap-2.5">
                               <div
                                 className="w-7 h-7 rounded-full flex items-center justify-center text-sm shrink-0"
-                                style={{ background: 'rgba(255,255,255,0.04)' }}
+                                style={{ background: 'var(--white-04)' }}
                               >
                                 {tx.flag}
                               </div>
                               <div>
                                 <p className="text-white text-[0.6rem] font-semibold leading-none">{tx.name}</p>
-                                <p className="text-[#4a4d4d] text-[0.5rem] mt-0.5">{tx.city}</p>
+                                <p className="text-[var(--color-muted-3)] text-[0.5rem] mt-0.5">{tx.city}</p>
                               </div>
                             </div>
                             <div className="text-right">
                               <p className="text-white text-[0.62rem] font-bold font-mono leading-none">{tx.amount}</p>
-                              <p className="text-[#bdf500] text-[0.5rem] mt-0.5">{tx.time} ago</p>
+                              <p className="text-[var(--color-accent)] text-[0.5rem] mt-0.5">{tx.time} ago</p>
                             </div>
                           </div>
                         ))}
@@ -400,19 +400,19 @@ export default function AppDownload() {
                   {/* Side buttons */}
                   <div
                     className="absolute -right-[3px] top-24 w-[3px] h-10 rounded-r-sm"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    style={{ background: 'var(--white-06)' }}
                   />
                   <div
                     className="absolute -left-[3px] top-20 w-[3px] h-7 rounded-l-sm"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    style={{ background: 'var(--white-06)' }}
                   />
                   <div
                     className="absolute -left-[3px] top-32 w-[3px] h-7 rounded-l-sm"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    style={{ background: 'var(--white-06)' }}
                   />
                   <div
                     className="absolute -left-[3px] top-44 w-[3px] h-12 rounded-l-sm"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    style={{ background: 'var(--white-06)' }}
                   />
                 </motion.div>
 
@@ -422,17 +422,17 @@ export default function AppDownload() {
                   transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
                   className="absolute -top-4 -right-16 rounded-2xl px-4 py-3"
                   style={{
-                    background: 'rgba(6,6,6,0.96)',
-                    border: '1px solid rgba(189,245,0,0.3)',
+                    background: 'var(--black-696)',
+                    border: '1px solid var(--accent-30)',
                     backdropFilter: 'blur(20px)',
-                    boxShadow: '0 16px 48px rgba(0,0,0,0.8), 0 0 0 1px rgba(189,245,0,0.05) inset',
+                    boxShadow: '0 16px 48px var(--black-80), 0 0 0 1px var(--accent-05) inset',
                   }}
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse" />
-                    <p className="text-[#5a5d5d] text-[0.48rem] uppercase tracking-widest">Confirmed</p>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
+                    <p className="text-[var(--color-muted-4)] text-[0.48rem] uppercase tracking-widest">Confirmed</p>
                   </div>
-                  <p className="text-[#bdf500] text-[0.8rem] font-bold font-mono">5.8s</p>
+                  <p className="text-[var(--color-accent)] text-[0.8rem] font-bold font-mono">5.8s</p>
                 </motion.div>
 
                 {/* Floating badge — fee */}
@@ -441,13 +441,13 @@ export default function AppDownload() {
                   transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
                   className="absolute -bottom-6 -left-16 rounded-2xl px-4 py-3"
                   style={{
-                    background: 'rgba(6,6,6,0.96)',
-                    border: '1px solid rgba(255,255,255,0.09)',
+                    background: 'var(--black-696)',
+                    border: '1px solid var(--white-09)',
                     backdropFilter: 'blur(20px)',
-                    boxShadow: '0 16px 48px rgba(0,0,0,0.6)',
+                    boxShadow: '0 16px 48px var(--black-60)',
                   }}
                 >
-                  <p className="text-[#5a5d5d] text-[0.48rem] uppercase tracking-widest mb-1">Fee</p>
+                  <p className="text-[var(--color-muted-4)] text-[0.48rem] uppercase tracking-widest mb-1">Fee</p>
                   <p className="text-white text-[0.8rem] font-bold font-mono">$0.60</p>
                 </motion.div>
               </motion.div>

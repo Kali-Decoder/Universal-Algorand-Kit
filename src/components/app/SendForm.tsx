@@ -117,11 +117,11 @@ export default function SendForm() {
   return (
     <>
       <div className="max-w-xl mx-auto w-full">
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-3xl p-6 shadow-[0_0_40px_rgba(189,245,0,0.04)]">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-3xl p-6 shadow-[0_0_40px_var(--accent-04)]">
           <h2 className="text-white font-bold text-xl mb-6">New Transfer</h2>
 
           <div className="bg-black border border-white/[0.08] rounded-2xl p-4 mb-4">
-            <div className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest mb-3">You Send</div>
+            <div className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest mb-3">You Send</div>
             <div className="flex items-center gap-3 mb-3">
               <input
                 type="number"
@@ -139,7 +139,7 @@ export default function SendForm() {
                   <ChevronDown size={14} />
                 </button>
                 {showTokenDropdown && (
-                  <div className="absolute right-0 top-full mt-1 bg-[#111] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[100px]">
+                  <div className="absolute right-0 top-full mt-1 bg-[var(--color-surface-7)] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[100px]">
                     {TOKEN_OPTIONS.map((t) => (
                       <button key={t.id} onClick={() => { setSelectedToken(t); setShowTokenDropdown(false); setQuote(null); }} className="block w-full text-left px-3 py-2.5 text-white text-sm hover:bg-white/[0.05]">
                         {t.name}
@@ -154,57 +154,57 @@ export default function SendForm() {
               <div className="relative">
                 <button
                   onClick={() => setShowChainDropdown(!showChainDropdown)}
-                  className="flex items-center gap-2 text-[#8e9191] text-xs hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-[var(--color-muted)] text-xs hover:text-white transition-colors"
                 >
-                  <span className="font-mono text-[#bdf500]">{chain.icon}</span>
+                  <span className="font-mono text-[var(--color-accent)]">{chain.icon}</span>
                   From {chain.name}
                   <ChevronDown size={12} />
                 </button>
                 {showChainDropdown && (
-                  <div className="absolute left-0 top-full mt-1 bg-[#111] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[160px]">
+                  <div className="absolute left-0 top-full mt-1 bg-[var(--color-surface-7)] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[160px]">
                     {chains.map((c) => (
                       <button key={c.id} onClick={() => { setChain(c); setShowChainDropdown(false); }} className="flex items-center gap-2 w-full px-3 py-2.5 text-white text-sm hover:bg-white/[0.05]">
-                        <span className="font-mono text-[#bdf500]">{c.icon}</span>{c.name}
+                        <span className="font-mono text-[var(--color-accent)]">{c.icon}</span>{c.name}
                       </button>
                     ))}
                   </div>
                 )}
               </div>
               {isConnected && (
-                <span className="text-[#8e9191] text-xs font-mono">Balance: {balanceFormatted} {selectedToken.name}</span>
+                <span className="text-[var(--color-muted)] text-xs font-mono">Balance: {balanceFormatted} {selectedToken.name}</span>
               )}
             </div>
           </div>
 
           <div className="flex items-center gap-3 my-3 px-2">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[rgba(189,245,0,0.2)] to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--accent-20)] to-transparent" />
             <div className="flex flex-col items-center gap-1">
-              <div className="w-8 h-8 rounded-full bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] flex items-center justify-center">
-                <ArrowRight size={14} className="text-[#bdf500]" />
+              <div className="w-8 h-8 rounded-full bg-[var(--accent-08)] border border-[var(--accent-20)] flex items-center justify-center">
+                <ArrowRight size={14} className="text-[var(--color-accent)]" />
               </div>
-              <span className="text-[#8e9191] text-xs whitespace-nowrap">Algorand</span>
+              <span className="text-[var(--color-muted)] text-xs whitespace-nowrap">Algorand</span>
             </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[rgba(189,245,0,0.2)] to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--accent-20)] to-transparent" />
           </div>
 
           <div className="bg-black border border-white/[0.08] rounded-2xl p-4 mb-4">
-            <div className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest mb-3">Recipient Receives</div>
+            <div className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest mb-3">Recipient Receives</div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="flex-1 text-[#bdf500] text-3xl font-bold font-mono">
+              <span className="flex-1 text-[var(--color-accent)] text-3xl font-bold font-mono">
                 {quote ? formatReceivedAmount(quote.amountOut, corridor.currency) : '—'}
               </span>
-              <span className="text-[#8e9191] font-semibold text-sm">{corridor.currency}</span>
+              <span className="text-[var(--color-muted)] font-semibold text-sm">{corridor.currency}</span>
             </div>
             <div className="relative">
               <button
                 onClick={() => setShowCorridorDropdown(!showCorridorDropdown)}
-                className="flex items-center gap-2 text-[#8e9191] text-xs hover:text-white transition-colors"
+                className="flex items-center gap-2 text-[var(--color-muted)] text-xs hover:text-white transition-colors"
               >
                 To {corridor.label}
                 <ChevronDown size={12} />
               </button>
               {showCorridorDropdown && (
-                <div className="absolute left-0 top-full mt-1 bg-[#111] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[200px]">
+                <div className="absolute left-0 top-full mt-1 bg-[var(--color-surface-7)] border border-white/[0.1] rounded-xl overflow-hidden z-20 min-w-[200px]">
                   {CONTRACT_CORRIDORS.map((c) => (
                     <button key={c.id} onClick={() => { setCorridor(c); setShowCorridorDropdown(false); setQuote(null); }} className="block w-full text-left px-3 py-2.5 text-white text-sm hover:bg-white/[0.05]">{c.label}</button>
                   ))}
@@ -214,20 +214,20 @@ export default function SendForm() {
           </div>
 
           <div className="mb-4">
-            <label className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest mb-2 block">Recipient Address</label>
+            <label className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest mb-2 block">Recipient Address</label>
             <input
               type="text"
               placeholder="Wallet address (0x...)"
               value={recipient}
               onChange={(e) => setRecipient(e.target.value)}
-              className="w-full bg-black border border-white/[0.08] focus:border-[rgba(189,245,0,0.35)] rounded-xl px-4 py-3 text-white text-sm font-mono outline-none transition-colors placeholder:text-white/20"
+              className="w-full bg-black border border-white/[0.08] focus:border-[var(--accent-35)] rounded-xl px-4 py-3 text-white text-sm font-mono outline-none transition-colors placeholder:text-white/20"
             />
           </div>
 
           <div className="mb-5">
             <button
               onClick={() => setShowFeeBreakdown(!showFeeBreakdown)}
-              className="flex items-center gap-2 text-[#8e9191] text-sm hover:text-white transition-colors"
+              className="flex items-center gap-2 text-[var(--color-muted)] text-sm hover:text-white transition-colors"
             >
               <Info size={14} />
               Fee breakdown
@@ -242,13 +242,13 @@ export default function SendForm() {
                   className="overflow-hidden"
                 >
                   <div className="mt-3 bg-black border border-white/[0.06] rounded-xl p-3 flex flex-col gap-2 text-sm">
-                    <div className="flex justify-between"><span className="text-[#8e9191]">Protocol fee (0.3%)</span><span className="text-white font-mono">{quote ? formatUSDC(quote.fee) : '—'} USDC</span></div>
-                    <div className="flex justify-between"><span className="text-[#8e9191]">Network fee</span><span className="text-white font-mono">~$0.002</span></div>
+                    <div className="flex justify-between"><span className="text-[var(--color-muted)]">Protocol fee (0.3%)</span><span className="text-white font-mono">{quote ? formatUSDC(quote.fee) : '—'} USDC</span></div>
+                    <div className="flex justify-between"><span className="text-[var(--color-muted)]">Network fee</span><span className="text-white font-mono">~$0.002</span></div>
                     <div className="flex justify-between border-t border-white/[0.06] pt-2 mt-1">
                       <div className="flex flex-col gap-0.5">
                         <span className="text-white font-semibold">Rate</span>
                         {lastUpdated && (
-                          <span className="text-[#4a4d4d] text-[0.6rem]">
+                          <span className="text-[var(--color-muted-3)] text-[0.6rem]">
                             Updated {Math.round((Date.now() - lastUpdated.getTime()) / 60000)}m ago
                           </span>
                         )}
@@ -258,7 +258,7 @@ export default function SendForm() {
                           1 USDC = {(rates?.[corridor.currency] ?? corridor.rate).toFixed(4)} {corridor.currency}
                         </span>
                         {ratesLoading ? (
-                          <span className="flex items-center gap-1 text-[0.6rem] text-[#8e9191]"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block" />Loading...</span>
+                          <span className="flex items-center gap-1 text-[0.6rem] text-[var(--color-muted)]"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block" />Loading...</span>
                         ) : ratesError || rates === null ? (
                           <span className="flex items-center gap-1 text-[0.6rem] text-yellow-400"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block" />Estimated</span>
                         ) : (
@@ -281,7 +281,7 @@ export default function SendForm() {
           <button
             onClick={handleSend}
             disabled={isSubmitDisabled && isConnected && isCorrectNetwork}
-            className="w-full bg-[#bdf500] hover:bg-[#d8ff7b] disabled:bg-white/[0.07] disabled:text-white/30 text-black font-bold py-4 rounded-2xl transition-all text-base"
+            className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] disabled:bg-white/[0.07] disabled:text-white/30 text-black font-bold py-4 rounded-2xl transition-all text-base"
           >
             {isLoading && <Loader2 size={16} className="inline mr-2 animate-spin" />}
             {submitLabel}
@@ -302,7 +302,7 @@ export default function SendForm() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-[#0a0a0a] border border-white/[0.1] rounded-3xl p-8 w-full max-w-md"
+              className="bg-[var(--color-surface-1)] border border-white/[0.1] rounded-3xl p-8 w-full max-w-md"
             >
               {step === 'success' ? (
                 <div className="text-center">
@@ -310,21 +310,21 @@ export default function SendForm() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 200 }}
-                    className="w-20 h-20 rounded-full bg-[rgba(189,245,0,0.1)] border border-[rgba(189,245,0,0.3)] flex items-center justify-center mx-auto mb-5"
+                    className="w-20 h-20 rounded-full bg-[var(--accent-10)] border border-[var(--accent-30)] flex items-center justify-center mx-auto mb-5"
                   >
-                    <CheckCircle2 size={40} className="text-[#bdf500]" />
+                    <CheckCircle2 size={40} className="text-[var(--color-accent)]" />
                   </motion.div>
                   <h3 className="text-white text-2xl font-extrabold mb-2">Transfer Complete!</h3>
-                  <p className="text-[#8e9191] mb-1">
+                  <p className="text-[var(--color-muted)] mb-1">
                     <span className="font-mono font-bold text-white">{amountIn} {selectedToken.name}</span> sent
                   </p>
-                  <p className="text-[#8e9191] mb-6">
-                    <span className="font-mono font-bold text-[#bdf500]">
+                  <p className="text-[var(--color-muted)] mb-6">
+                    <span className="font-mono font-bold text-[var(--color-accent)]">
                       {quote ? formatReceivedAmount(quote.amountOut, corridor.currency) : '—'} {corridor.currency}
                     </span> delivered
                   </p>
-                  <div className="flex items-center justify-center gap-2 text-[#8e9191] text-sm mb-4">
-                    <Sparkles size={14} className="text-[#bdf500]" />
+                  <div className="flex items-center justify-center gap-2 text-[var(--color-muted)] text-sm mb-4">
+                    <Sparkles size={14} className="text-[var(--color-accent)]" />
                     Settled in ~6 seconds via Algorand
                   </div>
                   {explorerUrl && (
@@ -332,12 +332,12 @@ export default function SendForm() {
                       href={explorerUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-1.5 text-[#bdf500] text-sm mb-6 hover:text-[#d8ff7b]"
+                      className="flex items-center justify-center gap-1.5 text-[var(--color-accent)] text-sm mb-6 hover:text-[var(--color-accent-hover)]"
                     >
                       View transaction <ExternalLink size={12} />
                     </a>
                   )}
-                  <button onClick={handleClose} className="w-full bg-[#bdf500] hover:bg-[#d8ff7b] text-black font-bold py-3 rounded-xl transition-all">
+                  <button onClick={handleClose} className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold py-3 rounded-xl transition-all">
                     Done
                   </button>
                 </div>
@@ -350,12 +350,12 @@ export default function SendForm() {
                       const isActive = currentTxIndex === stepIndex;
                       return (
                         <div key={s} className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
-                          isActive ? 'border-[rgba(189,245,0,0.3)] bg-[rgba(189,245,0,0.04)]' : isDone ? 'border-[rgba(189,245,0,0.15)] bg-[rgba(189,245,0,0.02)]' : 'border-white/[0.05]'
+                          isActive ? 'border-[var(--accent-30)] bg-[var(--accent-04)]' : isDone ? 'border-[var(--accent-15)] bg-[var(--accent-02)]' : 'border-white/[0.05]'
                         }`}>
                           <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0">
-                            {isDone ? <CheckCircle2 size={20} className="text-[#bdf500]" /> : isActive ? <Loader2 size={20} className="text-[#bdf500] animate-spin" /> : <div className="w-3 h-3 rounded-full bg-white/[0.1]" />}
+                            {isDone ? <CheckCircle2 size={20} className="text-[var(--color-accent)]" /> : isActive ? <Loader2 size={20} className="text-[var(--color-accent)] animate-spin" /> : <div className="w-3 h-3 rounded-full bg-white/[0.1]" />}
                           </div>
-                          <span className={`text-sm font-medium ${isActive ? 'text-white' : isDone ? 'text-[#bdf500]' : 'text-[#8e9191]'}`}>
+                          <span className={`text-sm font-medium ${isActive ? 'text-white' : isDone ? 'text-[var(--color-accent)]' : 'text-[var(--color-muted)]'}`}>
                             {TX_STEP_LABELS[s]}
                           </span>
                         </div>

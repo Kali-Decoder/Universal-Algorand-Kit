@@ -34,12 +34,12 @@ export default function HowItWorks() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20"
         >
           <div>
-            <p className="text-[#747878] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4">Intent-based execution</p>
+            <p className="text-[var(--color-muted-2)] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4">Intent-based execution</p>
             <h2 className="section-headline text-white">3 steps.<br />Any chain.<br /><span className="text-white/25">One execution layer.</span></h2>
           </div>
           <a
             href="/docs"
-            className="inline-flex items-center gap-2 bg-[#bdf500] hover:bg-[#d8ff7b] text-black font-bold text-[0.8rem] px-6 py-3 rounded-full transition-all duration-200 self-start md:self-auto shrink-0"
+            className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-[0.8rem] px-6 py-3 rounded-full transition-all duration-200 self-start md:self-auto shrink-0"
           >
             View docs <ArrowUpRight size={14} />
           </a>
@@ -62,11 +62,11 @@ export default function HowItWorks() {
                 <h3 className="text-white font-extrabold text-xl md:text-2xl tracking-tight leading-tight">{step.title}</h3>
               </div>
 
-              <p className="text-[#8e9191] text-[0.88rem] leading-relaxed md:flex-1 md:max-w-lg">{step.description}</p>
+              <p className="text-[var(--color-muted)] text-[0.88rem] leading-relaxed md:flex-1 md:max-w-lg">{step.description}</p>
 
               <div className="md:w-48 shrink-0 flex md:justify-end">
-                <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full text-[#bdf500] bg-[rgba(189,245,0,0.07)] border border-[rgba(189,245,0,0.18)]">
-                  <span className="w-1 h-1 rounded-full animate-pulse bg-[#bdf500]" />
+                <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full text-[var(--color-accent)] bg-[var(--accent-07)] border border-[var(--accent-18)]">
+                  <span className="w-1 h-1 rounded-full animate-pulse bg-[var(--color-accent)]" />
                   {step.detail}
                 </span>
               </div>

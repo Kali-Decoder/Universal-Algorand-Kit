@@ -35,20 +35,20 @@ export default function FAQ() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 md:mb-20"
         >
           <div>
-            <p className="text-[#747878] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4">Got questions?</p>
+            <p className="text-[var(--color-muted-2)] text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-4">Got questions?</p>
             <h2 className="section-headline text-white">
               Frequently<br />asked<br /><span className="text-white/25">questions.</span>
             </h2>
           </div>
           <div className="max-w-xs">
-            <p className="text-[#8e9191] text-sm leading-relaxed">
+            <p className="text-[var(--color-muted)] text-sm leading-relaxed">
               Still have questions? We're available on Discord and Twitter — or drop us an email.
             </p>
             <a
               href="https://github.com/Kali-Decoder"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#bdf500] text-sm font-semibold mt-3 hover:gap-2.5 transition-all duration-200"
+              className="inline-flex items-center gap-1.5 text-[var(--color-accent)] text-sm font-semibold mt-3 hover:gap-2.5 transition-all duration-200"
             >
               Contact us →
             </a>
@@ -71,15 +71,15 @@ export default function FAQ() {
               >
                 <span
                   className="font-semibold text-[0.95rem] leading-snug transition-colors duration-200"
-                  style={{ color: openIndex === i ? '#ffffff' : '#c4c7c7' }}
+                  style={{ color: openIndex === i ? 'var(--color-text)' : 'var(--color-muted-7)' }}
                 >
                   {faq.question}
                 </span>
                 <div
                   className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
                   style={{
-                    background: openIndex === i ? '#bdf500' : 'rgba(255,255,255,0.05)',
-                    border: `1px solid ${openIndex === i ? '#bdf500' : 'rgba(255,255,255,0.1)'}`,
+                    background: openIndex === i ? 'var(--color-accent)' : 'var(--white-05)',
+                    border: `1px solid ${openIndex === i ? 'var(--color-accent)' : 'var(--white-10)'}`,
                   }}
                 >
                   {openIndex === i ? (
@@ -98,7 +98,7 @@ export default function FAQ() {
                     transition={{ duration: 0.28, ease: [0.65, 0.05, 0, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="text-[#8e9191] text-sm leading-relaxed pb-6 max-w-2xl">{faq.answer}</p>
+                    <p className="text-[var(--color-muted)] text-sm leading-relaxed pb-6 max-w-2xl">{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -45,9 +45,9 @@ function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="flex items-center gap-1.5 text-[#8e9191] hover:text-[#bdf500] text-xs border border-white/[0.08] hover:border-[rgba(189,245,0,0.25)] px-3 py-1.5 rounded-lg transition-colors"
+      className="flex items-center gap-1.5 text-[var(--color-muted)] hover:text-[var(--color-accent)] text-xs border border-white/[0.08] hover:border-[var(--accent-25)] px-3 py-1.5 rounded-lg transition-colors"
     >
-      {copied ? <Check size={12} className="text-[#bdf500]" /> : <Copy size={12} />}
+      {copied ? <Check size={12} className="text-[var(--color-accent)]" /> : <Copy size={12} />}
       {copied ? 'Copied' : 'Copy'}
     </button>
   );
@@ -63,16 +63,16 @@ function CodeBlock({ code, lang = '' }: { code: string; lang?: string }) {
   return (
     <div className="relative bg-black border border-white/[0.08] rounded-xl overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b border-white/[0.06] bg-white/[0.02]">
-        <span className="text-[#8e9191] text-xs font-mono">{lang || 'code'}</span>
+        <span className="text-[var(--color-muted)] text-xs font-mono">{lang || 'code'}</span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 text-[#8e9191] hover:text-[#bdf500] text-xs transition-colors"
+          className="flex items-center gap-1.5 text-[var(--color-muted)] hover:text-[var(--color-accent)] text-xs transition-colors"
         >
-          {copied ? <Check size={12} className="text-[#bdf500]" /> : <Copy size={12} />}
+          {copied ? <Check size={12} className="text-[var(--color-accent)]" /> : <Copy size={12} />}
           {copied ? 'Copied' : 'Copy'}
         </button>
       </div>
-      <pre className="text-[#bdf500] font-mono text-sm leading-loose overflow-x-auto p-4">{code}</pre>
+      <pre className="text-[var(--color-accent)] font-mono text-sm leading-loose overflow-x-auto p-4">{code}</pre>
     </div>
   );
 }
@@ -490,12 +490,12 @@ function ArchitectureSection() {
 
   return (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <Network size={14} />
         Visuals
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4">System Architecture Diagrams</h1>
-      <p className="text-[#8e9191] text-lg mb-8 leading-relaxed">
+      <p className="text-[var(--color-muted)] text-lg mb-8 leading-relaxed">
         A full visual reference for how cross-chain intents are captured, relayed, and executed on Algorand.
       </p>
 
@@ -506,8 +506,8 @@ function ArchitectureSection() {
             onClick={() => setActiveTab(tab.id)}
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === tab.id
-                ? 'bg-[rgba(189,245,0,0.12)] text-[#bdf500] border border-[rgba(189,245,0,0.35)]'
-                : 'bg-white/[0.04] text-[#8e9191] border border-white/[0.08] hover:text-white hover:bg-white/[0.06]'
+                ? 'bg-[var(--accent-12)] text-[var(--color-accent)] border border-[var(--accent-35)]'
+                : 'bg-white/[0.04] text-[var(--color-muted)] border border-white/[0.08] hover:text-white hover:bg-white/[0.06]'
             }`}
           >
             {tab.label}
@@ -515,8 +515,8 @@ function ArchitectureSection() {
         ))}
       </div>
 
-      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-5 mb-4">
-        <div className="text-[#8e9191] text-xs uppercase tracking-widest mb-2">
+      <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-5 mb-4">
+        <div className="text-[var(--color-muted)] text-xs uppercase tracking-widest mb-2">
           {active?.label}
         </div>
         <CodeBlock code={active?.code ?? ''} lang="diagram" />
@@ -528,15 +528,15 @@ function ArchitectureSection() {
 const docsContent: Record<string, React.ReactNode> = {
   overview: (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <BookOpen size={14} />
         Universal Algo Kit
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4 leading-tight">Cross-Chain Intent Infrastructure for Algorand</h1>
-      <p className="text-[#8e9191] text-lg mb-6 leading-relaxed">
+      <p className="text-[var(--color-muted)] text-lg mb-6 leading-relaxed">
         Universal Algo Kit is an infrastructure SDK designed to make <strong className="text-white">Algorand the universal execution layer for multi-chain applications</strong>.
       </p>
-      <p className="text-[#8e9191] text-lg mb-8 leading-relaxed">
+      <p className="text-[var(--color-muted)] text-lg mb-8 leading-relaxed">
         Today’s blockchain ecosystem is fragmented. Users interact across multiple chains such as Ethereum, Polygon, Avalanche, and others. This forces developers to deploy applications on multiple networks and manage fragmented liquidity and state.
       </p>
 
@@ -546,31 +546,31 @@ const docsContent: Record<string, React.ReactNode> = {
           { label: 'Deploy Once', value: 'Any Chain', icon: <Shield size={16} />, desc: 'Users stay on their source chain' },
           { label: 'Intent-Based', value: 'Cross-Chain', icon: <Globe2 size={16} />, desc: 'Securely relayed execution' },
         ].map((s) => (
-          <div key={s.label} className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-5 group hover:border-[rgba(189,245,0,0.2)] transition-colors">
-            <div className="flex items-center gap-2 text-[#bdf500] mb-3">
+          <div key={s.label} className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-5 group hover:border-[var(--accent-20)] transition-colors">
+            <div className="flex items-center gap-2 text-[var(--color-accent)] mb-3">
               {s.icon}
-              <span className="text-[#8e9191] text-xs">{s.label}</span>
+              <span className="text-[var(--color-muted)] text-xs">{s.label}</span>
             </div>
             <div className="font-mono font-black text-2xl text-white mb-1">{s.value}</div>
-            <div className="text-[#8e9191] text-xs">{s.desc}</div>
+            <div className="text-[var(--color-muted)] text-xs">{s.desc}</div>
           </div>
         ))}
       </div>
 
       <h2 className="text-white font-bold text-xl mb-4">Problem Statement</h2>
       <div className="grid md:grid-cols-2 gap-4 mb-8">
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-5">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-5">
           <div className="text-white font-semibold mb-3">For Users</div>
-          <ul className="text-[#8e9191] text-sm leading-relaxed list-disc pl-5 space-y-1">
+          <ul className="text-[var(--color-muted)] text-sm leading-relaxed list-disc pl-5 space-y-1">
             <li>switch networks frequently</li>
             <li>bridge assets between chains</li>
             <li>manage multiple wallets and confirmations</li>
             <li>pay high gas costs on multiple chains</li>
           </ul>
         </div>
-        <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-5">
+        <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-5">
           <div className="text-white font-semibold mb-3">For Developers</div>
-          <ul className="text-[#8e9191] text-sm leading-relaxed list-disc pl-5 space-y-1">
+          <ul className="text-[var(--color-muted)] text-sm leading-relaxed list-disc pl-5 space-y-1">
             <li>deploy contracts on multiple chains</li>
             <li>maintain multiple codebases</li>
             <li>manage fragmented liquidity</li>
@@ -580,19 +580,19 @@ const docsContent: Record<string, React.ReactNode> = {
       </div>
 
       <h2 className="text-white font-bold text-xl mb-4">Solution</h2>
-      <p className="text-[#8e9191] text-sm leading-relaxed mb-4">
+      <p className="text-[var(--color-muted)] text-sm leading-relaxed mb-4">
         Universal Algo Kit provides a <strong className="text-white">cross-chain intent infrastructure</strong> that enables developers to deploy applications on Algorand while allowing users from other blockchains to interact with those applications seamlessly.
       </p>
-      <p className="text-[#8e9191] text-sm leading-relaxed">
+      <p className="text-[var(--color-muted)] text-sm leading-relaxed">
         Instead of executing logic on multiple chains, Universal Algo Kit forwards user actions from external chains and executes them on Algorand.
       </p>
 
-      <div className="mt-8 bg-[rgba(189,245,0,0.04)] border border-[rgba(189,245,0,0.15)] rounded-2xl p-5">
-        <div className="flex items-center gap-2 text-[#bdf500] font-semibold mb-2">
+      <div className="mt-8 bg-[var(--accent-04)] border border-[var(--accent-15)] rounded-2xl p-5">
+        <div className="flex items-center gap-2 text-[var(--color-accent)] font-semibold mb-2">
           <Zap size={15} />
           Intent-Based Architecture
         </div>
-        <p className="text-[#8e9191] text-sm leading-relaxed">
+        <p className="text-[var(--color-muted)] text-sm leading-relaxed">
           The system uses an <strong className="text-white">intent-based architecture</strong>, where user actions performed on external chains are captured and securely relayed to Algorand for execution.
         </p>
       </div>
@@ -600,26 +600,26 @@ const docsContent: Record<string, React.ReactNode> = {
   ),
   contracts: (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <Code2 size={14} />
         Architecture
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4">System Architecture</h1>
-      <p className="text-[#8e9191] text-lg mb-8">
+      <p className="text-[var(--color-muted)] text-lg mb-8">
         Universal Algo Kit consists of four main components: Gateway Contracts, Relayer Network, AlgoExecutor Contract, and Application Contracts.
       </p>
 
       <div className="flex flex-col gap-3 mb-8">
         {contractAddresses.map((c) => (
-          <div key={c.name} className="bg-[#0a0a0a] border border-white/[0.08] hover:border-[rgba(189,245,0,0.2)] rounded-xl p-4 transition-colors group">
+          <div key={c.name} className="bg-[var(--color-surface-1)] border border-white/[0.08] hover:border-[var(--accent-20)] rounded-xl p-4 transition-colors group">
             <div className="flex items-start justify-between gap-3 flex-wrap">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-[#bdf500]" />
+                  <div className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
                   <div className="text-white font-bold">{c.name}</div>
-                  <span className="text-[#8e9191] text-xs bg-white/[0.05] border border-white/[0.08] px-2 py-0.5 rounded-full">{c.network}</span>
+                  <span className="text-[var(--color-muted)] text-xs bg-white/[0.05] border border-white/[0.08] px-2 py-0.5 rounded-full">{c.network}</span>
                 </div>
-                <div className="font-mono text-[#bdf500]/70 text-xs break-all mt-2 pl-4">{c.address}</div>
+                <div className="font-mono text-[var(--accent-70)] text-xs break-all mt-2 pl-4">{c.address}</div>
               </div>
               <div className="flex items-center gap-2">
                 <CopyButton text={c.address} />
@@ -627,7 +627,7 @@ const docsContent: Record<string, React.ReactNode> = {
                   href={`${EXPLORER}/account/${c.address}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[#8e9191] hover:text-white text-xs border border-white/[0.08] hover:border-white/[0.15] px-3 py-1.5 rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 text-[var(--color-muted)] hover:text-white text-xs border border-white/[0.08] hover:border-white/[0.15] px-3 py-1.5 rounded-lg transition-colors"
                 >
                   <ExternalLink size={12} />
                   Explorer
@@ -644,12 +644,12 @@ const docsContent: Record<string, React.ReactNode> = {
   ),
   xcm: (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <Network size={14} />
         Flow
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4">Transaction Flow</h1>
-      <p className="text-[#8e9191] text-lg mb-8 leading-relaxed">
+      <p className="text-[var(--color-muted)] text-lg mb-8 leading-relaxed">
         The lifecycle of a transaction follows several steps. The total process typically takes <strong className="text-white">10–30 seconds depending on network conditions</strong>.
       </p>
 
@@ -663,24 +663,24 @@ const docsContent: Record<string, React.ReactNode> = {
           { step: '06', title: 'Execution', desc: 'The executor processes the intent and triggers the application logic.' },
           { step: '07', title: 'State Updated', desc: 'The application contract updates its state on Algorand.' },
         ].map((item, i) => (
-          <div key={item.step} className="flex gap-5 bg-[#0a0a0a] border border-white/[0.08] hover:border-[rgba(189,245,0,0.2)] rounded-2xl p-5 transition-colors group">
+          <div key={item.step} className="flex gap-5 bg-[var(--color-surface-1)] border border-white/[0.08] hover:border-[var(--accent-20)] rounded-2xl p-5 transition-colors group">
             <div className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] flex items-center justify-center shrink-0">
-                <span className="text-[#bdf500] font-black text-xs font-mono">{item.step}</span>
+              <div className="w-10 h-10 rounded-xl bg-[var(--accent-08)] border border-[var(--accent-20)] flex items-center justify-center shrink-0">
+                <span className="text-[var(--color-accent)] font-black text-xs font-mono">{item.step}</span>
               </div>
-              {i < 6 && <div className="w-px flex-1 bg-[rgba(189,245,0,0.1)]" />}
+              {i < 6 && <div className="w-px flex-1 bg-[var(--accent-10)]" />}
             </div>
             <div className="pt-2 pb-4">
               <h3 className="text-white font-bold mb-2">{item.title}</h3>
-              <p className="text-[#8e9191] text-sm leading-relaxed">{item.desc}</p>
+              <p className="text-[var(--color-muted)] text-sm leading-relaxed">{item.desc}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl p-6">
+      <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl p-6">
         <h3 className="text-white font-bold mb-3 flex items-center gap-2">
-          <ArrowRight size={15} className="text-[#bdf500]" />
+          <ArrowRight size={15} className="text-[var(--color-accent)]" />
           Component Responsibilities
         </h3>
         <div className="grid grid-cols-2 gap-3">
@@ -691,9 +691,9 @@ const docsContent: Record<string, React.ReactNode> = {
             { label: 'Application Contracts', xcm: 'standard Algorand smart contracts (DeFi, lending, games, DAOs)', bridge: ' ' },
           ].map((row) => (
             <div key={row.label} className="col-span-2 grid grid-cols-3 gap-3 text-sm">
-              <div className="text-[#8e9191] flex items-center">{row.label}</div>
-              <div className="text-[#bdf500] bg-[rgba(189,245,0,0.05)] border border-[rgba(189,245,0,0.1)] rounded-lg px-3 py-2 text-xs">{row.xcm}</div>
-              <div className="text-[#8e9191] bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 text-xs opacity-60">Core component</div>
+              <div className="text-[var(--color-muted)] flex items-center">{row.label}</div>
+              <div className="text-[var(--color-accent)] bg-[var(--accent-05)] border border-[var(--accent-10)] rounded-lg px-3 py-2 text-xs">{row.xcm}</div>
+              <div className="text-[var(--color-muted)] bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 text-xs opacity-60">Core component</div>
             </div>
           ))}
         </div>
@@ -703,22 +703,22 @@ const docsContent: Record<string, React.ReactNode> = {
   architecture: <ArchitectureSection />,
   corridors: (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <Globe2 size={14} />
         Identity
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4">Universal Algo Account</h1>
-      <p className="text-[#8e9191] text-lg mb-8">
+      <p className="text-[var(--color-muted)] text-lg mb-8">
         Universal Algo Kit introduces the concept of a <strong className="text-white">Universal Algo Account</strong>, which maps external blockchain wallets to deterministic Algorand identities. This ensures that a user interacting from different chains still maintains a <strong className="text-white">single unified identity and balance on Algorand</strong>.
       </p>
 
       <h2 className="text-white font-bold text-xl mb-4">Example Mapping</h2>
       <CodeBlock code={interfaceCode} lang="mapping" />
 
-      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl overflow-hidden">
+      <div className="bg-[var(--color-surface-1)] border border-white/[0.08] rounded-2xl overflow-hidden">
         <div className="grid grid-cols-[1.5fr_0.7fr_1fr_0.7fr_0.8fr] gap-3 px-5 py-3 bg-white/[0.02] border-b border-white/[0.06]">
           {['Source Chain Wallet', 'Maps To', 'Identity', 'Balance', 'Status'].map((h) => (
-            <div key={h} className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest">{h}</div>
+            <div key={h} className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest">{h}</div>
           ))}
         </div>
         {[
@@ -730,12 +730,12 @@ const docsContent: Record<string, React.ReactNode> = {
         ].map((row) => (
           <div key={row.corridor} className="grid grid-cols-[1.5fr_0.7fr_1fr_0.7fr_0.8fr] gap-3 px-5 py-3.5 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors items-center">
             <div className="text-white text-sm">{row.corridor}</div>
-            <div className="text-[#8e9191] font-mono text-sm">{row.currency}</div>
+            <div className="text-[var(--color-muted)] font-mono text-sm">{row.currency}</div>
             <div className="text-white font-mono text-sm">{row.rate}</div>
-            <div className="text-[#bdf500] font-mono text-sm font-semibold">{row.fee}</div>
+            <div className="text-[var(--color-accent)] font-mono text-sm font-semibold">{row.fee}</div>
             <div>
-              <span className="inline-flex items-center gap-1.5 text-[#bdf500] text-xs font-semibold bg-[rgba(189,245,0,0.08)] border border-[rgba(189,245,0,0.2)] px-2.5 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#bdf500] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 text-[var(--color-accent)] text-xs font-semibold bg-[var(--accent-08)] border border-[var(--accent-20)] px-2.5 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
                 {row.status}
               </span>
             </div>
@@ -743,17 +743,17 @@ const docsContent: Record<string, React.ReactNode> = {
         ))}
       </div>
 
-      <p className="text-[#8e9191] text-xs mt-4 text-center">A single unified identity and balance on Algorand across source chains.</p>
+      <p className="text-[var(--color-muted)] text-xs mt-4 text-center">A single unified identity and balance on Algorand across source chains.</p>
     </div>
   ),
   faq: (
     <div>
-      <div className="flex items-center gap-2 text-[#bdf500] text-sm font-semibold mb-3 uppercase tracking-widest">
+      <div className="flex items-center gap-2 text-[var(--color-accent)] text-sm font-semibold mb-3 uppercase tracking-widest">
         <HelpCircle size={14} />
         Context
       </div>
       <h1 className="text-4xl font-extrabold text-white mb-4">Problem & Solution</h1>
-      <p className="text-[#8e9191] text-lg mb-8">Universal Algo Kit is built to solve multi-chain fragmentation by routing intents to Algorand for execution.</p>
+      <p className="text-[var(--color-muted)] text-lg mb-8">Universal Algo Kit is built to solve multi-chain fragmentation by routing intents to Algorand for execution.</p>
       <div className="space-y-3">
         {[
           {
@@ -773,12 +773,12 @@ const docsContent: Record<string, React.ReactNode> = {
             a: 'The total process typically takes 10–30 seconds depending on network conditions.',
           },
         ].map((item, i) => (
-          <details key={i} className="group bg-[#0a0a0a] border border-white/[0.08] hover:border-[rgba(189,245,0,0.2)] rounded-xl overflow-hidden transition-colors">
+          <details key={i} className="group bg-[var(--color-surface-1)] border border-white/[0.08] hover:border-[var(--accent-20)] rounded-xl overflow-hidden transition-colors">
             <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
               <span className="text-white font-semibold text-sm pr-4">{item.q}</span>
-              <ChevronRight size={16} className="text-[#8e9191] group-open:rotate-90 transition-transform shrink-0" />
+              <ChevronRight size={16} className="text-[var(--color-muted)] group-open:rotate-90 transition-transform shrink-0" />
             </summary>
-            <div className="px-5 pb-5 text-[#8e9191] text-sm leading-relaxed border-t border-white/[0.06] pt-4">
+            <div className="px-5 pb-5 text-[var(--color-muted)] text-sm leading-relaxed border-t border-white/[0.06] pt-4">
               {item.a}
             </div>
           </details>
@@ -794,24 +794,24 @@ export default function DocsPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="border-b border-white/[0.08] bg-[#060606]/80 backdrop-blur-sm px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-30">
+      <div className="border-b border-white/[0.08] bg-[var(--surface-2-80)] backdrop-blur-sm px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-30">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-[#bdf500] text-xl font-bold">●</span>
+          <span className="text-[var(--color-accent)] text-xl font-bold">●</span>
           <span className="text-white font-extrabold text-base">Universal Algo Kit</span>
-          <ChevronRight size={14} className="text-[#8e9191]" />
-          <span className="text-[#8e9191] text-sm">Docs</span>
+          <ChevronRight size={14} className="text-[var(--color-muted)]" />
+          <span className="text-[var(--color-muted)] text-sm">Docs</span>
         </Link>
         <div className="flex items-center gap-3">
           {/* <button
             type="button"
             aria-disabled="true"
-            className="bg-[#bdf500] text-black font-bold px-4 py-2 rounded-xl text-sm transition-all opacity-70 cursor-not-allowed"
+            className="bg-[var(--color-accent)] text-black font-bold px-4 py-2 rounded-xl text-sm transition-all opacity-70 cursor-not-allowed"
           >
             Launch App
           </button> */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-[#8e9191] hover:text-white transition-colors"
+            className="md:hidden text-[var(--color-muted)] hover:text-white transition-colors"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -819,30 +819,30 @@ export default function DocsPage() {
       </div>
 
       <div className="flex max-w-6xl mx-auto">
-        <aside className={`${mobileMenuOpen ? 'block absolute z-20 w-64 bg-[#060606] shadow-2xl' : 'hidden'} md:block md:relative md:w-60 shrink-0 border-r border-white/[0.08] min-h-[calc(100vh-65px)] p-4`}>
-          <div className="text-[#8e9191] text-xs font-semibold uppercase tracking-widest mb-4 px-3">Documentation</div>
+        <aside className={`${mobileMenuOpen ? 'block absolute z-20 w-64 bg-[var(--color-surface-2)] shadow-2xl' : 'hidden'} md:block md:relative md:w-60 shrink-0 border-r border-white/[0.08] min-h-[calc(100vh-65px)] p-4`}>
+          <div className="text-[var(--color-muted)] text-xs font-semibold uppercase tracking-widest mb-4 px-3">Documentation</div>
           {sections.map((s) => (
             <button
               key={s.id}
               onClick={() => { setActive(s.id); setMobileMenuOpen(false); }}
               className={`w-full text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all mb-1 ${
                 active === s.id
-                  ? 'bg-[rgba(189,245,0,0.08)] text-[#bdf500] border border-[rgba(189,245,0,0.2)]'
-                  : 'text-[#8e9191] hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-[var(--accent-08)] text-[var(--color-accent)] border border-[var(--accent-20)]'
+                  : 'text-[var(--color-muted)] hover:text-white hover:bg-white/[0.04]'
               }`}
             >
-              <span className={active === s.id ? 'text-[#bdf500]' : 'text-[#8e9191]'}>{s.icon}</span>
+              <span className={active === s.id ? 'text-[var(--color-accent)]' : 'text-[var(--color-muted)]'}>{s.icon}</span>
               {s.label}
             </button>
           ))}
 
           <div className="mt-6 pt-6 border-t border-white/[0.06] px-3">
-            <div className="text-[#8e9191] text-xs mb-3">Need help?</div>
+            <div className="text-[var(--color-muted)] text-xs mb-3">Need help?</div>
             <a
               href="https://github.com/Kali-Decoder"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#8e9191] hover:text-[#bdf500] text-xs transition-colors"
+              className="flex items-center gap-1.5 text-[var(--color-muted)] hover:text-[var(--color-accent)] text-xs transition-colors"
             >
               <ExternalLink size={11} /> GitHub
             </a>

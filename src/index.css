@@ -11,8 +11,8 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -47,7 +47,7 @@
   }
 
   .in-seconds-gradient {
-    color: #bdf500;
+    color: var(--color-accent);
   }
 
   .stats-marquee {
@@ -72,8 +72,8 @@
 }
 
 ::selection {
-  background: #bdf500;
-  color: #000000;
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 ::-webkit-scrollbar {
@@ -81,14 +81,14 @@
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2d3131;
+  background: var(--color-scrollbar);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #bdf500;
+  background: var(--color-accent);
 }
 
 input[type=number]::-webkit-inner-spin-button,
