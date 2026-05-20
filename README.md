@@ -1,118 +1,103 @@
-# RemitStar
 
-> Cross-chain stablecoin remittances for LATAM & APAC — powered by Polkadot Hub
+# Universal Algorand Kit
 
-## What is RemitStar?
+Cross-Chain Intent Infrastructure for Algorand
 
-RemitStar is a decentralized remittance protocol that enables instant,
-low-cost international money transfers using stablecoins on Polkadot Hub.
-Send USDC or USDT from any EVM chain to recipients in Peru, Philippines,
-Indonesia, Mexico, or Colombia — settled in ~6 seconds at 0.30% fee.
+<img width="1620" height="971" alt="image" src="https://github.com/user-attachments/assets/fb024074-76a1-4518-9fdd-073b45af0bf7" />
 
-Traditional services charge 5–7% and take 1–3 days. RemitStar changes that.
+---
 
-## Live Demo
+# Overview
 
-- Frontend: https://remit-star.vercel.app
-- Network: Polkadot Hub Testnet
-- Explorer: 
+Universal Algorand Kit is a cross-chain intent forwarding infrastructure designed to make Algorand the universal execution layer for decentralized applications.
 
+The infrastructure allows developers to deploy applications once on Algorand while enabling users from any blockchain ecosystem such as Ethereum, Polygon, Avalanche, Base, Optimism, and BNB Chain to interact seamlessly without switching networks or bridging assets manually.
 
-## Deployed Contracts (Polkadot Hub Testnet)
+Universal Algorand Kit introduces an intent-based execution architecture where users interact from their preferred chains while all application execution and settlement occur on Algorand.
 
-| Contract | Address |
-|---|---|
-| MockUSDC | 0x321a83089D68c37c2Ee4Df00cC30B4D330f0399B |
-| MockUSDT | 0x2bd8AbEB2F5598f8477560C70c742aFfc22912de |
-| ComplianceGate | 0xa89fb8A3f72C77cA15cfb8a1903f6Ef4D48bed82 |
-| LiquidityPool | 0xe5038EF6DA68DdF1D0851674F75E152Cc13cE040 |
-| FeeDistributor | 0x094F9e6a7aE4bb9d8d83dfb14F0cD4BD654e12af |
-| RemitCore | 0x710051f799D05afa3953B7af11A38C214Bc45B3F |
+The system abstracts away:
+- network switching
+- bridging complexity
+- fragmented liquidity
+- multi-chain deployments
 
-## Architecture
+creating a unified execution environment for Web3 applications.
 
-```
-User (any EVM chain)
-│
-▼
-RemitCore.sol          ← Main entry point, route + compliance check
-├── ComplianceGate.sol   ← OZ AccessControl, KYC/blacklist
-├── FeeDistributor.sol   ← OZ Ownable, splits 0.30% fee
-└── LiquidityPool.sol    ← OZ ERC4626 vault, LP deposits
-```
+---
 
-## Supported Corridors
+# Problem Statement
 
-| Route | Currency | Rate | Updated |
-|---|---|---|---|
-| USA → Peru | PEN | 1 USDC = 3.45 PEN | Mar 18, 2026 |
-| USA → Philippines | PHP | 1 USDC = 59.81 PHP | Mar 18, 2026 |
-| USA → Indonesia | IDR | 1 USDC = 16,980 IDR | Mar 18, 2026 |
-| USA → Mexico | MXN | 1 USDC = 17.68 MXN | Mar 18, 2026 |
-| USA → Colombia | COP | 1 USDC = 3,701 COP | Mar 18, 2026 |
+The blockchain ecosystem has become highly fragmented across multiple networks.
 
-## Smart Contract Stack
+Users today are forced to:
+- switch wallet networks frequently
+- bridge assets manually
+- manage multiple balances
+- pay gas on several chains
+- confirm multiple transactions
 
-- **Solidity** 0.8.24
-- **Foundry** — build, test, deploy
-- **OpenZeppelin** — AccessControl, ERC4626, Ownable, Pausable, ReentrancyGuard
-- **Network** — Polkadot Hub Testnet 
+This creates poor user experience and onboarding friction.
 
-## Frontend Stack
+Developers face additional complexity:
+- deploying applications across many chains
+- maintaining multiple infrastructures
+- handling fragmented liquidity
+- integrating bridge systems
+- synchronizing application state
 
-- React + TypeScript + Vite
-- wagmi v2 + viem
-- TailwindCSS
-- WalletConnect v3
+As the number of chains grows, infrastructure complexity increases significantly.
 
-## OpenZeppelin Usage (Sponsor Track)
+---
 
-RemitStar uses OpenZeppelin in non-trivial ways across all contracts:
+# Solution
 
-- `AccessControl` in ComplianceGate — role-based KYC/blacklist system
-  with `KYC_OPERATOR_ROLE` and `PAUSER_ROLE`
-- `ERC4626` in LiquidityPool — tokenized vault where LPs earn from
-  protocol fees; shares represent proportional pool ownership
-- `Ownable` + `ReentrancyGuard` in FeeDistributor — secure fee splitting
-  with reentrancy protection on token transfers
-- `Pausable` in RemitCore + LiquidityPool — emergency circuit breaker
+Universal Algorand Kit solves this problem by introducing a chain-agnostic interaction model.
 
-## How It Works
+Instead of executing logic on every blockchain:
+- users interact from any chain
+- gateway contracts capture intents
+- relayers forward execution requests
+- Algorand executes application logic
+- state and liquidity remain unified
 
-1. User connects wallet (MetaMask or WalletConnect)
-2. Selects amount, stablecoin (USDC/USDT), and destination corridor
-3. RemitStar calculates live quote: fee + destination amount
-4. User approves token spending + calls `sendRemittance()`
-5. RemitCore validates compliance, deducts 0.30% fee, logs transfer
-6. FeeDistributor splits fee: 50% to treasury, 50% to liquidity pool
-7. Transfer recorded on-chain, visible in history
+This transforms Algorand into:
+> A universal execution and settlement layer for Web3 applications.
 
-## Running Locally
+---
 
-```bash
-# Contracts
-cd contracts
-cp .env.example .env  # add your PRIVATE_KEY
-forge build
-forge test
+# Architecture
 
-# Frontend
-cd ..
-cp .env.example .env  # add VITE_WC_PROJECT_ID
-npm install
-npm run dev
-```
-
-## Test the Faucet
-
-Get test USDC/USDT directly from the contracts:
-
-```bash
-cast send 0x321a83089D68c37c2Ee4Df00cC30B4D330f0399B \
-  "faucet(address,uint256)" \
-  YOUR_ADDRESS 1000000000 \
-  --rpc-url https://testnet-passet-hub-eth-rpc.polkadot.io \
-  --private-key YOUR_KEY
-```
-
-# Universal-Algorand-Kit
+```text
+User (Any Chain)
+        │
+        ▼
+┌────────────────────┐
+│ dApp / SDK Layer   │
+│ Encode Intent      │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Gateway Contract   │
+│ (Source Chain)     │
+│ Capture Intent     │
+└─────────┬──────────┘
+          │ Intent Event
+          ▼
+┌────────────────────┐
+│ Relayer Network    │
+│ Detect + Validate  │
+└─────────┬──────────┘
+          │ Execution Request
+          ▼
+┌────────────────────┐
+│ AlgoExecutor       │
+│ (Algorand)         │
+│ Execute Logic      │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Application Layer  │
+│ DeFi / Games / DAO │
+└────────────────────┘
