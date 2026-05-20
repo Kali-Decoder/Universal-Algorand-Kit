@@ -81,16 +81,23 @@ PRIVATE_KEY=your_private_key_here
 ARC_TESTNET_RPC_URL=https://rpc.testnet.arc.network
 SOMNIA_TESTNET_RPC_URL=https://dream-rpc.somnia.network/
 SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_KEY
+ALGORAND_ALGOD_URL=https://testnet-api.algonode.cloud
+ALGORAND_INDEXER_URL=https://testnet-idx.algonode.cloud
 
-# Contract addresses (fill after deployment)
+# Contract addresses and Algorand app ids (fill after deployment)
 COUNTER_ADDRESS=
 ARC_EXECUTOR_ADDRESS=
 ARC_GATEWAY_ADDRESS=
+COUNTER_APP_ID=
+TODO_APP_ID=
+ALGORAND_RELAYER_MNEMONIC=
 
 # Relayer config
 RELAYER_ADDRESS=
 RELAYER_POLL_INTERVAL=5000
 ```
+
+The relayer now listens to Somnia gateway events and settles the matching intents on Algorand testnet by calling the Algorand apps directly.
 
 ### Compile Contracts
 

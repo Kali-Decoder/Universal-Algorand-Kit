@@ -5,6 +5,8 @@
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",
+    "algorand:build": "cd algorand && algokit project run build",
+    "algorand:deploy": "cd algorand && algokit project deploy testnet",
     "deploy:arc": "hardhat run scripts/deploy-arc.ts --network arcTestnet",
     "deploy:gateway": "hardhat run scripts/deploy-gateway.ts --network somniaTestnet",
     "deploy:localhost": "hardhat run scripts/deploy-local.ts --network localhost",
@@ -21,6 +23,7 @@
   },
   "dependencies": {
     "dotenv": "^16.6.1",
+    "algosdk": "^2.9.0",
     "ethers": "^6.9.0",
     "viem": "^2.0.0"
   }
