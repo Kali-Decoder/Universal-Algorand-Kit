@@ -1,0 +1,586 @@
+{
+  "version": 3,
+  "sources": [
+    "../../counter/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;AAMQ;AAAe;AAAf;AAFR;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;;;;;;;;AAMQ;AAAA;AAAA;AAAA;AAAgB;AAAhB;AAAA;AAAA;;AAAA;AAFH;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAOU;AAAA;AAAA;AAAA;AAAP;AAAA;AACgB;AAAhB;AAAA;AAAA;;AAAA;AAHH;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAQU;AAAA;AAAA;AAAA;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0"
+    },
+    "5": {
+      "op": "bytecblock \"counter\" 0x151f7c75"
+    },
+    "20": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "22": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": []
+    },
+    "25": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\""
+      ],
+      "stack_out": [
+        "\"counter\""
+      ]
+    },
+    "26": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"counter\"",
+        "0"
+      ]
+    },
+    "27": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "28": {
+      "block": "main_after_if_else@2",
+      "stack_in": [],
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "30": {
+      "op": "bz main___algopy_default_create@12",
+      "stack_out": []
+    },
+    "33": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "35": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "36": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "37": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "39": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "40": {
+      "op": "pushbytess 0x4a325901 0xdae6e4ce 0xc9c9375a // method \"increment()uint64\", method \"decrement()uint64\", method \"get_counter()uint64\"",
+      "defined_out": [
+        "Method(decrement()uint64)",
+        "Method(get_counter()uint64)",
+        "Method(increment()uint64)"
+      ],
+      "stack_out": [
+        "Method(increment()uint64)",
+        "Method(decrement()uint64)",
+        "Method(get_counter()uint64)"
+      ]
+    },
+    "57": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(decrement()uint64)",
+        "Method(get_counter()uint64)",
+        "Method(increment()uint64)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(increment()uint64)",
+        "Method(decrement()uint64)",
+        "Method(get_counter()uint64)",
+        "tmp%6#0"
+      ]
+    },
+    "60": {
+      "op": "match increment decrement get_counter",
+      "stack_out": []
+    },
+    "68": {
+      "op": "err"
+    },
+    "69": {
+      "block": "main___algopy_default_create@12",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "71": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "72": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "74": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "75": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "76": {
+      "op": "return",
+      "defined_out": [],
+      "stack_out": []
+    },
+    "77": {
+      "subroutine": "smart_contracts.counter.contract.Counter.increment[routing]",
+      "params": {},
+      "block": "increment",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "78": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "79": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "80": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "81": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "1"
+      ]
+    },
+    "82": {
+      "op": "+",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "83": {
+      "op": "bytec_0 // \"counter\"",
+      "stack_out": [
+        "tmp%0#1",
+        "\"counter\""
+      ]
+    },
+    "84": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"counter\"",
+        "tmp%0#1",
+        "tmp%0#1 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#1",
+        "\"counter\"",
+        "tmp%0#1 (copy)"
+      ]
+    },
+    "86": {
+      "op": "app_global_put",
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "87": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "88": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "89": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "90": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "91": {
+      "op": "log",
+      "stack_out": []
+    },
+    "92": {
+      "op": "intc_0 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "93": {
+      "op": "return",
+      "stack_out": []
+    },
+    "94": {
+      "subroutine": "smart_contracts.counter.contract.Counter.decrement[routing]",
+      "params": {},
+      "block": "decrement",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "95": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "96": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "97": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "98": {
+      "op": "dup",
+      "defined_out": [
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%0#0 (copy)"
+      ]
+    },
+    "99": {
+      "op": "assert",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "100": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "1"
+      ]
+    },
+    "101": {
+      "op": "-",
+      "defined_out": [
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "tmp%1#1"
+      ]
+    },
+    "102": {
+      "op": "bytec_0 // \"counter\"",
+      "stack_out": [
+        "tmp%1#1",
+        "\"counter\""
+      ]
+    },
+    "103": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"counter\"",
+        "tmp%1#1",
+        "tmp%1#1 (copy)"
+      ],
+      "stack_out": [
+        "tmp%1#1",
+        "\"counter\"",
+        "tmp%1#1 (copy)"
+      ]
+    },
+    "105": {
+      "op": "app_global_put",
+      "stack_out": [
+        "tmp%1#1"
+      ]
+    },
+    "106": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "107": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "108": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "109": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "110": {
+      "op": "log",
+      "stack_out": []
+    },
+    "111": {
+      "op": "intc_0 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "112": {
+      "op": "return",
+      "stack_out": []
+    },
+    "113": {
+      "subroutine": "smart_contracts.counter.contract.Counter.get_counter[routing]",
+      "params": {},
+      "block": "get_counter",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "114": {
+      "op": "bytec_0 // \"counter\"",
+      "defined_out": [
+        "\"counter\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"counter\""
+      ]
+    },
+    "115": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "116": {
+      "error": "check self.counter exists",
+      "op": "assert // check self.counter exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "117": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "118": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "119": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "120": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "121": {
+      "op": "log",
+      "stack_out": []
+    },
+    "122": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "123": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}

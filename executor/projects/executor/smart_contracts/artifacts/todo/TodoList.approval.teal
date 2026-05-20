@@ -1,0 +1,190 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 2 1
+    bytecblock 0x746f646f735f
+    // smart_contracts/todo/contract.py:5
+    // class TodoList(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@12
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0xbc6d3057 0x985092cf 0x50cd0737 // method "add_todo(byte[],string,string)void", method "remove_todo(byte[],string)void", method "get_todo(byte[],string)string"
+    txna ApplicationArgs 0
+    match add_todo remove_todo get_todo
+    err
+
+main___algopy_default_create@12:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return
+
+
+// smart_contracts.todo.contract.TodoList.add_todo[routing]() -> void:
+add_todo:
+    // smart_contracts/todo/contract.py:11
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:14
+    // key = user + todo_id.bytes
+    cover 2
+    concat
+    // smart_contracts/todo/contract.py:15
+    // self.todos[key] = text
+    bytec_0 // 0x746f646f735f
+    swap
+    concat
+    dup
+    box_del
+    pop
+    swap
+    box_put
+    // smart_contracts/todo/contract.py:11
+    // @abimethod()
+    intc_2 // 1
+    return
+
+
+// smart_contracts.todo.contract.TodoList.remove_todo[routing]() -> void:
+remove_todo:
+    // smart_contracts/todo/contract.py:17
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:20
+    // key = user + todo_id.bytes
+    concat
+    // smart_contracts/todo/contract.py:21
+    // if key in self.todos:
+    bytec_0 // 0x746f646f735f
+    swap
+    concat
+    dup
+    box_len
+    bury 1
+    bz remove_todo_after_if_else@3
+    // smart_contracts/todo/contract.py:22
+    // del self.todos[key]
+    dup
+    box_del
+    pop
+
+remove_todo_after_if_else@3:
+    // smart_contracts/todo/contract.py:17
+    // @abimethod()
+    intc_2 // 1
+    return
+
+
+// smart_contracts.todo.contract.TodoList.get_todo[routing]() -> void:
+get_todo:
+    // smart_contracts/todo/contract.py:24
+    // @abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:27
+    // key = user + todo_id.bytes
+    concat
+    // smart_contracts/todo/contract.py:28
+    // return self.todos.get(key, default=String(""))
+    bytec_0 // 0x746f646f735f
+    swap
+    concat
+    box_get
+    pushbytes ""
+    cover 2
+    select
+    // smart_contracts/todo/contract.py:24
+    // @abimethod(readonly=True)
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_2 // 1
+    return
