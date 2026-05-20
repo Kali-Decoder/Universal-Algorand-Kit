@@ -1,0 +1,284 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 2 1
+    bytecblock 0x746f646f735f 0x746f646f5f636f6d706c657465645f 0x00
+    // smart_contracts/todo/contract.py:5
+    // class TodoList(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@13
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0xbc6d3057 0x0ed5af56 0x865ba9be 0x50cd0737 // method "add_todo(byte[],string,string)void", method "toggle_todo(byte[],string)void", method "delete_todo(byte[],string)void", method "get_todo(byte[],string)string"
+    txna ApplicationArgs 0
+    match add_todo toggle_todo delete_todo get_todo
+    err
+
+main___algopy_default_create@13:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return
+
+
+// contract.TodoList.add_todo[routing]() -> void:
+add_todo:
+    // smart_contracts/todo/contract.py:13
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:11
+    // return user + todo_id.bytes
+    cover 2
+    concat
+    // smart_contracts/todo/contract.py:16
+    // self.todos[key] = text
+    bytec_0 // 0x746f646f735f
+    dig 1
+    concat
+    dup
+    box_del
+    pop
+    uncover 2
+    box_put
+    // smart_contracts/todo/contract.py:17
+    // self.completed[key] = Bool(False)
+    bytec_1 // 0x746f646f5f636f6d706c657465645f
+    swap
+    concat
+    bytec_2 // 0x00
+    box_put
+    // smart_contracts/todo/contract.py:13
+    // @abimethod()
+    intc_2 // 1
+    return
+
+
+// contract.TodoList.toggle_todo[routing]() -> void:
+toggle_todo:
+    // smart_contracts/todo/contract.py:19
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:11
+    // return user + todo_id.bytes
+    concat
+    // smart_contracts/todo/contract.py:22
+    // assert key in self.todos
+    bytec_0 // 0x746f646f735f
+    dig 1
+    concat
+    box_len
+    bury 1
+    assert
+    // smart_contracts/todo/contract.py:23
+    // current, exists = self.completed.maybe(key)
+    bytec_1 // 0x746f646f5f636f6d706c657465645f
+    swap
+    concat
+    dup
+    box_get
+    // smart_contracts/todo/contract.py:24
+    // self.completed[key] = Bool(not (current.native if exists else False))
+    bz toggle_todo_ternary_false@3
+    dup
+    intc_0 // 0
+    getbit
+
+toggle_todo_ternary_merge@4:
+    // smart_contracts/todo/contract.py:24
+    // self.completed[key] = Bool(not (current.native if exists else False))
+    !
+    bytec_2 // 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    dig 2
+    swap
+    box_put
+    // smart_contracts/todo/contract.py:19
+    // @abimethod()
+    intc_2 // 1
+    return
+
+toggle_todo_ternary_false@3:
+    // smart_contracts/todo/contract.py:24
+    // self.completed[key] = Bool(not (current.native if exists else False))
+    intc_0 // 0
+    b toggle_todo_ternary_merge@4
+
+
+// contract.TodoList.delete_todo[routing]() -> void:
+delete_todo:
+    // smart_contracts/todo/contract.py:26
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:11
+    // return user + todo_id.bytes
+    concat
+    // smart_contracts/todo/contract.py:29
+    // assert key in self.todos
+    bytec_0 // 0x746f646f735f
+    dig 1
+    concat
+    dup
+    box_len
+    bury 1
+    assert
+    // smart_contracts/todo/contract.py:30
+    // del self.todos[key]
+    box_del
+    pop
+    // smart_contracts/todo/contract.py:31
+    // if key in self.completed:
+    bytec_1 // 0x746f646f5f636f6d706c657465645f
+    swap
+    concat
+    dup
+    box_len
+    bury 1
+    bz delete_todo_after_if_else@3
+    // smart_contracts/todo/contract.py:32
+    // del self.completed[key]
+    dup
+    box_del
+    pop
+
+delete_todo_after_if_else@3:
+    // smart_contracts/todo/contract.py:26
+    // @abimethod()
+    intc_2 // 1
+    return
+
+
+// contract.TodoList.get_todo[routing]() -> void:
+get_todo:
+    // smart_contracts/todo/contract.py:34
+    // @abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/todo/contract.py:11
+    // return user + todo_id.bytes
+    concat
+    // smart_contracts/todo/contract.py:37
+    // return self.todos.get(key, default=String(""))
+    bytec_0 // 0x746f646f735f
+    swap
+    concat
+    box_get
+    pushbytes ""
+    cover 2
+    select
+    // smart_contracts/todo/contract.py:34
+    // @abimethod(readonly=True)
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_2 // 1
+    return
