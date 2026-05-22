@@ -10,6 +10,9 @@ This SDK enables users to send intents from Somnia (EVM chain) that are automati
 - ✅ **Counter** - Direct increment/decrement operations
 - ✅ **TodoList** - Add, toggle, and delete todos via Executor pattern
 
+<img width="1620" height="971" alt="image" src="https://github.com/user-attachments/assets/9c9f0939-5c2e-497c-81d2-236181613e5c" />
+
+
 ## 📋 Prerequisites
 
 - Node.js v18+ and npm
