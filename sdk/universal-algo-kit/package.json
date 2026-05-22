@@ -1,6 +1,6 @@
 {
   "name": "universal-algo-intent-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cross-chain intent SDK: EVM (Somnia/Ethereum) → Algorand settlement",
   "license": "MIT",
   "author": "",

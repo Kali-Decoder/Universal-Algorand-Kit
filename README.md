@@ -10,6 +10,22 @@ This SDK enables users to send intents from Somnia (EVM chain) that are automati
 - ✅ **Counter** - Direct increment/decrement operations
 - ✅ **TodoList** - Add, toggle, and delete todos via Executor pattern
 
+## 📦 SDK Package (publishable)
+
+This repo also contains a standalone, publishable npm package:
+
+- Package source: `sdk/universal-algo-kit/`
+- Docs: `sdk/universal-algo-kit/README.md`
+- Architecture notes: `sdk/universal-algo-kit/docs/ARCHITECTURE.md`
+
+Install (after you publish it under your scope/name):
+
+```bash
+npm i universal-algo-kit
+# or (recommended) scoped name:
+# npm i @<your-npm-username>/universal-algo-kit
+```
+
 <img width="1620" height="971" alt="image" src="https://github.com/user-attachments/assets/9c9f0939-5c2e-497c-81d2-236181613e5c" />
 
 
