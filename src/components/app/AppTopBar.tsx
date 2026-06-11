@@ -12,7 +12,7 @@ export default function AppTopBar({ pageTitle }: AppTopBarProps) {
         <h1 className="text-white font-bold text-lg">{pageTitle}</h1>
         <div className="flex items-center gap-1.5 bg-[var(--accent-08)] border border-[var(--accent-20)] rounded-full px-3 py-1">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
-          <span className="text-[var(--color-accent)] text-xs font-semibold">Algorand</span>
+          <span className="text-[var(--color-accent)] text-xs font-semibold">Somnia → Algorand</span>
         </div>
       </div>
 

@@ -38,10 +38,10 @@ export default function HowItWorks() {
             <h2 className="section-headline text-white">3 steps.<br />Any chain.<br /><span className="text-white/25">One execution layer.</span></h2>
           </div>
           <a
-            href="/docs"
+            href="/demo/counter"
             className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-[0.8rem] px-6 py-3 rounded-full transition-all duration-200 self-start md:self-auto shrink-0"
           >
-            View docs <ArrowUpRight size={14} />
+            Try demo <ArrowUpRight size={14} />
           </a>
         </motion.div>
 

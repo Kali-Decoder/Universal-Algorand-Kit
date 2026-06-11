@@ -55,20 +55,18 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
-          <button
-            type="button"
-            aria-disabled="true"
-            className="text-[var(--color-muted)] text-[0.78rem] font-medium px-4 transition-colors cursor-not-allowed opacity-60"
+          <Link
+            to="/docs"
+            className="text-[var(--color-muted)] hover:text-white transition-colors duration-200 text-[0.78rem] font-medium px-4"
           >
-            Log in
-          </button>
-          {/* <button
-            type="button"
-            aria-disabled="true"
+            Docs
+          </Link>
+          <Link
+            to="/demo/counter"
             className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-[0.78rem] px-5 py-2.5 rounded-full transition-all duration-200"
           >
-            Launch App
-          </button> */}
+            Launch Demo
+          </Link>
         </div>
 
         <button className="md:hidden text-white p-1.5" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -87,13 +85,20 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
-          {/* <button
-            type="button"
-            aria-disabled="true"
-            className="mt-5 bg-[var(--color-accent)] text-black font-bold py-4 rounded-full text-sm opacity-70 cursor-not-allowed"
+          <Link
+            to="/docs"
+            className="text-[var(--color-muted)] hover:text-white transition-colors text-sm font-medium text-left py-4"
+            onClick={() => setMobileOpen(false)}
           >
-            Launch App
-          </button> */}
+            Docs
+          </Link>
+          <Link
+            to="/demo/counter"
+            onClick={() => setMobileOpen(false)}
+            className="mt-5 bg-[var(--color-accent)] text-black font-bold py-4 rounded-full text-sm text-center"
+          >
+            Launch Demo
+          </Link>
         </div>
       )}
     </nav>

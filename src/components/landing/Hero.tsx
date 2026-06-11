@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ArrowUpRight from 'lucide-react/dist/esm/icons/arrow-up-right.js';
 import Send from 'lucide-react/dist/esm/icons/send.js';
@@ -318,12 +319,18 @@ export default function Hero() {
               transition={{ delay: 0.65, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-3"
             >
-              <a
-                href="/docs"
+              <Link
+                to="/demo/counter"
                 className="group inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-[0.85rem] px-7 py-3.5 rounded-full transition-all duration-200 w-fit"
               >
-                Read the Docs
+                Try Counter Demo
                 <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <a
+                href="/docs"
+                className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/[0.06] border border-white/[0.12] text-white font-semibold text-[0.85rem] px-7 py-3.5 rounded-full transition-all duration-200 w-fit"
+              >
+                Read the Docs
               </a>
               <button
                 onClick={() => scrollTo('how-it-works')}

@@ -1,6 +1,6 @@
 {
   "name": "remitstar",
-  "description": "Cross-chain stablecoin remittance protocol on Polkadot Hub",
+  "description": "Universal Algo Kit — cross-chain intent demo (EVM → Algorand)",
   "private": true,
   "version": "1.0.0",
   "type": "module",

@@ -1,26 +1,27 @@
-import { useAccount, useConnect, useDisconnect, useSwitchChain } from 'wagmi'
+import { useAccount, useConnect, useDisconnect, useSwitchChain } from 'wagmi';
+import { somniaTestnet } from '../wagmi.config';
 
-const ALGORAND_CHAIN_ID = 420420417
+const SOMNIA_CHAIN_ID = somniaTestnet.id;
 
 export function useWallet() {
-  const { address, isConnected, chainId } = useAccount()
-  const { connect, connectors } = useConnect()
-  const { disconnect } = useDisconnect()
-  const { switchChain } = useSwitchChain()
+  const { address, isConnected, chainId } = useAccount();
+  const { connect, connectors, isPending: isConnecting } = useConnect();
+  const { disconnect } = useDisconnect();
+  const { switchChain, isPending: isSwitching } = useSwitchChain();
 
-  const isCorrectNetwork = chainId === ALGORAND_CHAIN_ID
+  const isCorrectNetwork = chainId === SOMNIA_CHAIN_ID;
 
   const shortAddress = address
     ? `${address.slice(0, 6)}...${address.slice(-4)}`
-    : ''
+    : '';
 
   function connectWallet(connectorIndex = 0) {
-    const connector = connectors[connectorIndex] ?? connectors[0]
-    if (connector) connect({ connector })
+    const connector = connectors[connectorIndex] ?? connectors[0];
+    if (connector) connect({ connector, chainId: SOMNIA_CHAIN_ID });
   }
 
-  function switchToAlgorand() {
-    switchChain({ chainId: ALGORAND_CHAIN_ID })
+  function switchToSomnia() {
+    switchChain({ chainId: SOMNIA_CHAIN_ID });
   }
 
   return {
@@ -28,9 +29,13 @@ export function useWallet() {
     isConnected,
     chainId,
     isCorrectNetwork,
+    isConnecting,
+    isSwitching,
     connect: connectWallet,
     disconnect,
-    switchToAlgorand,
+    switchToSomnia,
+    switchToAlgorand: switchToSomnia,
     shortAddress,
-  }
+    networkName: somniaTestnet.name,
+  };
 }

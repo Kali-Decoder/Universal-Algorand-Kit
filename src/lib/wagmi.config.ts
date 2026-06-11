@@ -1,29 +1,32 @@
-import { createConfig, http } from 'wagmi'
-import { injected, walletConnect } from 'wagmi/connectors'
-import { defineChain } from 'viem'
+import { createConfig, http } from 'wagmi';
+import { injected, walletConnect } from 'wagmi/connectors';
+import { defineChain } from 'viem';
+import { intentConfig } from './intentConfig';
 
-export const algorandTestnet = defineChain({
-  id: 420420417,
-  name: 'Algorand Testnet',
-  nativeCurrency: { name: 'WND', symbol: 'WND', decimals: 18 },
+export const somniaTestnet = defineChain({
+  id: 50312,
+  name: 'Somnia Testnet',
+  nativeCurrency: { name: 'STT', symbol: 'STT', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://testnet-api.algonode.cloud'] },
+    default: { http: [intentConfig.somniaRpc] },
   },
   blockExplorers: {
     default: {
-      name: 'Subscan',
-      url: 'https://assethub-paseo.subscan.io',
+      name: 'Somnia Explorer',
+      url: intentConfig.somniaExplorer,
     },
   },
-})
+});
 
 export const wagmiConfig = createConfig({
-  chains: [algorandTestnet],
+  chains: [somniaTestnet],
   transports: {
-    [algorandTestnet.id]: http(),
+    [somniaTestnet.id]: http(intentConfig.somniaRpc),
   },
   connectors: [
     injected(),
-    walletConnect({ projectId: import.meta.env.VITE_WC_PROJECT_ID as string }),
+    walletConnect({
+      projectId: import.meta.env.VITE_WC_PROJECT_ID as string,
+    }),
   ],
-})
+});
