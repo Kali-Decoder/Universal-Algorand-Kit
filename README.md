@@ -6,6 +6,143 @@
 
 This SDK enables users to send intents from Somnia (EVM chain) that are automatically settled on Algorand. The relayer detects events on Somnia and executes corresponding transactions on Algorand.
 
+
+### Universal Algorand Kit - System Architecture
+```mermaid
+flowchart LR
+
+    %% Users
+    USER[User Wallet]
+
+    %% Source Chains
+    subgraph EVM["Source Chains"]
+        ETH[Ethereum]
+        POLY[Polygon]
+        AVAX[Avalanche]
+        BASE[Base]
+        SOM[Somnia]
+        GW[ArcGateway.sol]
+    end
+
+    %% SDK Layer
+    subgraph SDK["Universal Algo Kit SDK"]
+        SENDER[EvmIntentSender]
+        CLI[UAK CLI]
+    end
+
+    %% Relayer Layer
+    subgraph RELAYER["Universal Relayer Network"]
+        RELAYER1[Intent Relayer]
+        VALIDATOR[Intent Validation]
+        ROUTER[Execution Router]
+    end
+
+    %% Algorand Layer
+    subgraph ALGO["Algorand Execution Layer"]
+        EXECUTOR[ArcExecutor]
+        COUNTER[Counter App]
+        TODO[Todo App]
+        DEFI[Future DeFi Apps]
+        NFT[Future NFT Apps]
+    end
+
+    USER --> SDK
+
+    SDK --> SENDER
+    SDK --> CLI
+
+    ETH --> GW
+    POLY --> GW
+    AVAX --> GW
+    BASE --> GW
+    SOM --> GW
+
+    GW --> RELAYER1
+
+    RELAYER1 --> VALIDATOR
+    VALIDATOR --> ROUTER
+
+    ROUTER --> COUNTER
+    ROUTER --> EXECUTOR
+
+    EXECUTOR --> TODO
+    EXECUTOR --> DEFI
+    EXECUTOR --> NFT
+
+```
+
+### Intent Execution Flow
+```mermaid
+
+sequenceDiagram
+
+    participant U as User
+    participant G as ArcGateway
+    participant R as Relayer
+    participant E as ArcExecutor
+    participant A as Algorand App
+
+    U->>G: forwardIntentWithData()
+    G-->>R: IntentForwarded Event
+
+    R->>R: Validate Nonce
+    R->>R: Validate Target
+    R->>R: Validate Calldata
+
+    alt Direct Execution
+        R->>A: ApplicationCall
+    else Executor Execution
+        R->>E: execute_with_data()
+        E->>A: Inner ApplicationCall
+    end
+
+    A-->>U: State Updated
+    
+```
+
+### SDK Architecture
+
+```mermaid
+flowchart TB
+
+    CONFIG[SDK Config]
+
+    CONFIG --> UAK[createUniversalAlgoKit]
+
+    UAK --> SENDER[EvmIntentSender]
+    UAK --> RELAYER[AlgorandIntentRelayer]
+
+    SENDER --> COUNTER[sendCounterIncrement]
+    SENDER --> TODOADD[sendTodoAdd]
+    SENDER --> TODOTOGGLE[sendTodoToggle]
+    SENDER --> TODODELETE[sendTodoDelete]
+
+    RELAYER --> POLL[Poll Events]
+    RELAYER --> VALIDATE[Validate Intents]
+    RELAYER --> SETTLE[Settle on Algorand]
+
+    CLI[UAK CLI]
+    CLI --> RELAYER
+    CLI --> SENDER
+```
+
+
+### Security Valication 
+
+```mermaid
+flowchart LR
+
+    INTENT[Intent Event]
+
+    INTENT --> NONCE[Nonce Validation]
+    NONCE --> TARGET[Target Whitelist]
+    TARGET --> CALLDATA[Calldata Validation]
+    CALLDATA --> CONFIRM[Block Confirmations]
+    CONFIRM --> DEDUPE[Intent Deduplication]
+    DEDUPE --> RATE[Rate Limiting]
+    RATE --> EXEC[Execution on Algorand]
+```
+
 **Supported Apps:**
 - ✅ **Counter** - Direct increment/decrement operations
 - ✅ **TodoList** - Add, toggle, and delete todos via Executor pattern
