@@ -127,7 +127,7 @@ flowchart TB
 ```
 
 
-### Security Valication 
+### Security Validation 
 
 ```mermaid
 flowchart LR
